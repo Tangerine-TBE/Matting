@@ -1,0 +1,2 @@
+include ':app',':module_ad',':module_base',':module_matting',':cropper',':sticker',':library',':module_gpuimage',':doodle'
+rootProject.name = "Matting"

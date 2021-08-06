@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_marginStart="10dp"
+    android:id="@+id/rootView">
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_agreen_location"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/tv_vip"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#66000000"
+        android:textColor="@color/white"
+        android:text="VIP"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

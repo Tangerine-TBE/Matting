@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_select_age_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="温馨提示"
+        android:textColor="#ff272727"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.看一次视频，对应分类下的全部高清背景任你挑选。"
+        android:textColor="#ff9a9a9a"
+        android:textSize="15sp"
+        android:background="@drawable/shape_portrait_tip_text_bg"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.背景尺寸大小不同，切换背景，可能导致抠图位置和文本位置改版为居中显示。"
+        android:textColor="#ff9a9a9a"
+        android:textSize="15sp"
+        android:background="@drawable/shape_portrait_tip_text_bg"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.建议您先选择确定背景，然后再进行移动，文本操作。"
+        android:textColor="#ff9a9a9a"
+        android:textSize="15sp"
+        android:background="@drawable/shape_portrait_tip_text_bg"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/yes"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="确定"
+        android:textColor="#ff272727"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:background="@drawable/shape_rename_btn_bg"
+        android:layout_marginTop="26dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"/>
+</LinearLayout>
