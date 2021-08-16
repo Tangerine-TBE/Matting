@@ -50,7 +50,7 @@ android {
 
     // 只在打包提测时改apk文件名，开发时记得注释掉
 //    applicationVariants.all { variant ->
-//        variant.getPackageApplication().outputDirectory = new File("F:/安装包/抠图/天王星/1.0")
+//        variant.getPackageApplication().outputDirectory = new File("F:/安装包/抠图/天王星/${rootProject.ext.versions.versionName}")
 //        variant.outputs.all {
 //            outputFileName = "${variant.productFlavors[0].manifestPlaceholders.get("app_name_channel")}" +
 //                    "_${variant.productFlavors[0].name}" +
@@ -64,7 +64,7 @@ android {
         _oppo {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "抠图P图大师",
+            manifestPlaceholders = [app_name_channel: "抠图P图神器",
                                     CHANNEL_VALUE:"_oppo"]
         }
         _xiaomi {

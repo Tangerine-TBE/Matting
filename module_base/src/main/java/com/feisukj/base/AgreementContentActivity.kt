@@ -1,5 +1,8 @@
 package com.feisukj.base
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -11,6 +14,7 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.feisukj.base.util.ToastUtil
 import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.activity_agreement_content_base.*
 
@@ -27,6 +31,8 @@ class AgreementContentActivity:AppCompatActivity() {
     private val ttUrl = "https://partner.oceanengine.com/privacy"
     private val weChatUrl = "https://open.weixin.qq.com/cgi-bin/frame?t=news/protocol_developer_tmpl"
     private val qqUrl = "https://wiki.open.qq.com/wiki/%E8%85%BE%E8%AE%AF%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E8%80%85%E5%8D%8F%E8%AE%AE"
+
+    private var count = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,18 @@ class AgreementContentActivity:AppCompatActivity() {
         }
         barBack.setOnClickListener {
             finish()
+        }
+        barTitle.setOnClickListener {
+            count--
+            if (count == 0){
+                val cm: ClipboardManager = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                cm.setPrimaryClip(ClipData.newPlainText("text", getFuwu().toString())) //text也可以是"null"
+
+                if (cm.hasPrimaryClip()) {
+                    cm.primaryClip?.getItemAt(0)?.text
+                }
+                ToastUtil.showCenterToast("复制成功")
+            }
         }
     }
     private fun fuwu(){
@@ -311,7 +329,9 @@ class AgreementContentActivity:AppCompatActivity() {
                     "\n" +
                     "如果您在使用本应用程序时对隐私有任何疑问，或对我们的做法有疑问，请通过电子邮件联系我们\n" +
                     " \n" +
-                    " 客服邮箱：$email")
+                    " 客服邮箱：$email\n" +
+                    "\n" +
+                    "最后更新时间：2019年9月24日\n")
         return stringBuilder
     }
 }

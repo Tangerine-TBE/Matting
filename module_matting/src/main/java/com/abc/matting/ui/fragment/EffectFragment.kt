@@ -22,7 +22,9 @@ class EffectFragment : BaseFragment() {
 
         iv_banner.setOnClickListener {
             PermissionUtils.askPermission(mActivity,Permission.CAMERA){
-                startActivity(Intent(mActivity,ComicActivity::class.java))
+                val intent = Intent(mActivity,OldActivity2::class.java)
+                intent.putExtra(OldActivity2.typeKey,OldActivity2.TYPE_COMIC)
+                startActivity(intent)
             }
         }
 

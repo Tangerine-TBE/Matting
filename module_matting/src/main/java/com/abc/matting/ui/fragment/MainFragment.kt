@@ -57,7 +57,9 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
     private fun initClickEven(){
         iv_anim.setOnClickListener {
             PermissionUtils.askPermission(mActivity,Permission.CAMERA){
-                startActivity(Intent(mActivity, ComicActivity::class.java))
+                val intent = Intent(mActivity,OldActivity2::class.java)
+                intent.putExtra(OldActivity2.typeKey,OldActivity2.TYPE_COMIC)
+                startActivity(intent)
             }
         }
 
@@ -73,9 +75,11 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 //                    .selectionMode(PictureConfig.SINGLE)
 //                    .forResult(PORTRAIT_MATTING_CODE)
 //            }
-            val intent = Intent(mActivity,PortraitActivity::class.java)
-            intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_PORTRAIT)
-            startActivity(intent)
+            askStorageAndCameraPermission(mActivity){
+                val intent = Intent(mActivity,PortraitActivity::class.java)
+                intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_PORTRAIT)
+                startActivity(intent)
+            }
         }
 
         //人脸特效
@@ -85,9 +89,11 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //智能抠图
         view1.setOnClickListener {
-            val intent = Intent(mActivity,PortraitActivity::class.java)
-            intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_INTELLIGENT)
-            startActivity(intent)
+            askStorageAndCameraPermission(mActivity){
+                val intent = Intent(mActivity,PortraitActivity::class.java)
+                intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_INTELLIGENT)
+                startActivity(intent)
+            }
         }
 
         //手动抠图

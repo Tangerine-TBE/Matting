@@ -77,7 +77,7 @@ class SplashActivity : AppCompatActivity() {
             })
         }else{
             getAdConfig()
-            askPermissions()
+
             //友盟初始化配置
             if (!BuildConfig.DEBUG){
                 UMConfigure.init(BaseApplication.application, "60fe3217328eac0d2eb6538c", BaseConstant.channel, UMConfigure.DEVICE_TYPE_PHONE, null)
@@ -86,6 +86,7 @@ class SplashActivity : AppCompatActivity() {
             GDTADManager.getInstance().initWith(BaseApplication.application, ADConstants.kGDTMobSDKAppKey)
 
             TTAdManagerHolder.init(BaseApplication.application)
+            askPermissions()
         }
     }
 
@@ -134,41 +135,41 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun askPermissions() {
-        val userPermission=if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.Q){
-            listOf(
-                    Manifest.permission.READ_PHONE_STATE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION
-                    )
-        }else{
-            listOf(
-                    Manifest.permission.READ_PHONE_STATE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-        }
-        AndPermission.with(this)
-            .runtime()
-                .permission(userPermission.toTypedArray())
-                .onGranted {
-                    builder = AdController.Builder(this,ADConstants.START_PAGE)
-                            .setContainer(splash_container)
-                            .create()
-                    builder?.show()
-                }
-                .onDenied {
-                    builder = AdController.Builder(this,ADConstants.START_PAGE)
-                            .setContainer(splash_container)
-                            .create()
-                    builder?.show()
-//                    checkIn()
-                }
-                .rationale(DefaultRationale())
-                .start()
+//        val userPermission=if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.Q){
+//            listOf(
+//                    Manifest.permission.READ_PHONE_STATE,
+//                    Manifest.permission.READ_EXTERNAL_STORAGE,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                    )
+//        }else{
+//            listOf(
+//                    Manifest.permission.READ_PHONE_STATE,
+//                    Manifest.permission.READ_EXTERNAL_STORAGE,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            )
+//        }
+//        AndPermission.with(this)
+//            .runtime()
+//                .permission(userPermission.toTypedArray())
+//                .onGranted {
+//                    builder = AdController.Builder(this,ADConstants.START_PAGE)
+//                            .setContainer(splash_container)
+//                            .create()
+//                    builder?.show()
+//                }
+//                .onDenied {
+//                    builder = AdController.Builder(this,ADConstants.START_PAGE)
+//                            .setContainer(splash_container)
+//                            .create()
+//                    builder?.show()
+////                    checkIn()
+//                }
+//                .rationale(DefaultRationale())
+//                .start()
+        builder = AdController.Builder(this,ADConstants.START_PAGE)
+            .setContainer(splash_container)
+            .create()
+        builder?.show()
     }
 
     override fun onPause() {
