@@ -5,6 +5,7 @@ import com.abc.matting.R
 import com.abc.matting.bean.DataBean
 import com.abc.matting.ui.dialog.TipDialog
 import com.abc.matting.utils.HttpUtils
+import com.feisukj.base.AgreementContentActivity
 import com.feisukj.base.BaseConstant
 import com.feisukj.base.baseclass.BaseActivity
 import com.feisukj.base.bean.UserBean
@@ -22,6 +23,7 @@ class AboutUsActivity : BaseActivity() {
     override fun initView() {
         mImmersionBar.statusBarColor(android.R.color.transparent).statusBarDarkFont(true).init()
         version.text = "V${BaseConstant.versionName}"
+        email.text = "客服邮箱：${AgreementContentActivity.email}"
 
         delete.setOnClickListener {
             if (SPUtil.getInstance().getBoolean(Constants.IS_LOGIN,false)){

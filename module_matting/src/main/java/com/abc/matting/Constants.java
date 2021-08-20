@@ -9,6 +9,8 @@ public class Constants {
 
     public static String IMAGE_LIST = "lockscreenclock/imageList";
 
+    public static String SEE_VIDEO_TIME = "see_video_time";
+
     //验证码倒计时时间
     public static final int SECOND = 30;
 

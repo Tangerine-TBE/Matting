@@ -7,7 +7,7 @@ package com.feisukj.base.bean.ad
 
 class AdPage {
     var start_page: TypeBean? = null//闪屏页面
-    var makegoldcoin_page: TypeBean? = null
+    var background_page: TypeBean? = null
     var exit_page: TypeBean? = null
 
     var Advertisement:Advertisement_?=null
@@ -19,7 +19,7 @@ class AdPage {
         var kTouTiaoChaPingKey=ADConstants.kTouTiaoChaPingKey
         var kTouTiaoJiLiKey=ADConstants.kTouTiaoJiLiKey
         var kTouTiaoSeniorKey=ADConstants.kTouTiaoSeniorKey
-        var kTouTiaoSmallSeniorKey=ADConstants.kTouTiaoSmallSeniorKey
+        var ktouTiaoFullscreenvideoKey=ADConstants.ktouTiaoFullscreenvideoKey
 
         var kGDTMobSDKAppKey=ADConstants.kGDTMobSDKAppKey
         var kGDTMobSDKChaPingKey=ADConstants.kGDTMobSDKChaPingKey
@@ -27,6 +27,6 @@ class AdPage {
         var kGDTMobSDKBannerKey=ADConstants.kGDTMobSDKBannerKey
         var kGDTMobSDKNativeKey=ADConstants.kGDTMobSDKNativeKey
         var kGDTMobSDKJiLiKey=ADConstants.kGDTMobSDKJiLiKey
-        var kGDTMobSDKSmallNativeKey=ADConstants.kGDTMobSDKSmallNativeKey
+        var kGDTMobSDKNativeSmallKey=ADConstants.kGDTMobSDKNativeSmallKey
     }
 }

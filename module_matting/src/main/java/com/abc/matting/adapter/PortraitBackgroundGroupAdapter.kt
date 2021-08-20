@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abc.matting.R
 import com.abc.matting.bean.BackgroundGroupBean
 import com.abc.matting.utils.GetDataUtils
+import com.abc.matting.utils.Utils
 import com.feisukj.base.baseclass.RecyclerViewHolder
 import com.feisukj.base.util.BitmapUtils
 
@@ -26,7 +27,7 @@ class PortraitBackgroundGroupAdapter : RecyclerView.Adapter<RecyclerViewHolder>(
 //        holder.setRadiusImage(R.id.image_big,8f,BitmapUtils.getBitmapFromAssetsFile(mList[position].imgBig))
 //        holder.setRadiusImage(R.id.image_small,4f,mList[position].imgSmall)
         holder.getView<ImageView>(R.id.text_bg).visibility = View.VISIBLE
-        if (mList[position].needVip&&!GetDataUtils.isVip()){
+        if (mList[position].needVip&&!GetDataUtils.isVip()&&!Utils.canSetBackground(mList[position].id)){
             holder.getView<ImageView>(R.id.vip_tip).visibility = View.VISIBLE
         }else{
             holder.getView<ImageView>(R.id.vip_tip).visibility = View.INVISIBLE

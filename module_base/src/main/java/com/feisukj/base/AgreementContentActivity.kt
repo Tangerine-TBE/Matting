@@ -12,6 +12,7 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.feisukj.base.util.ToastUtil
@@ -81,6 +82,13 @@ class AgreementContentActivity:AppCompatActivity() {
         val tt = SpannableString(ttUrl)
         val weChat = SpannableString(weChatUrl)
         val qq = SpannableString(qqUrl)
+
+        val personalInformation1 = SpannableString("个人常用设备信息、位置信息、网络信息、个人通信信息")
+        val personalInformation2 = SpannableString("个人常用设备信息、位置信息、网络信息、个人通信信息")
+        val personalInformation3 = SpannableString("个人常用设备信息、位置信息、网络信息、个人通信信息")
+        val personalInformation4 = SpannableString("个人常用设备信息、位置信息、网络信息、个人通信信息")
+        val personalInformation5 = SpannableString("个人常用设备信息、位置信息、网络信息、个人通信信息")
+
         um.setSpan(object : ClickableSpan() {
             override fun onClick(view: View) {
                 val intent = Intent(this@AgreementContentActivity, WebViewActivity::class.java)
@@ -124,6 +132,12 @@ class AgreementContentActivity:AppCompatActivity() {
         weChat.setSpan(ForegroundColorSpan(Color.parseColor("#09C1CE")), 0, weChat.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         qq.setSpan(ForegroundColorSpan(Color.parseColor("#09C1CE")), 0, qq.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
+        personalInformation1.setSpan(UnderlineSpan(),0,personalInformation1.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        personalInformation2.setSpan(UnderlineSpan(),0,personalInformation2.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        personalInformation3.setSpan(UnderlineSpan(),0,personalInformation3.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        personalInformation4.setSpan(UnderlineSpan(),0,personalInformation4.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        personalInformation5.setSpan(UnderlineSpan(),0,personalInformation5.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
         stringBuilder.append("隐私政策\n" +
                 "\n" +
                 "隐私政策尊重并保护所有使用隐私政策网络服务用户的个人隐私权。\n" +
@@ -162,7 +176,9 @@ class AgreementContentActivity:AppCompatActivity() {
                     "\n" +
                     "收集方式：调用系统相关接口自动采集\n" +
                     "\n" +
-                    "个人信息类型：个人常用设备信息、位置信息、网络信息、个人通信信息\n" +
+                    "个人信息类型：")
+            .append(personalInformation1)
+            .append("\n"+
                     "\n" +
                     "个人信息字段：设备信息：设备标识符（IMEI、IDFA、Android ID、MAC、OAID等相关信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）\n" +
                     "\n" +
@@ -185,7 +201,9 @@ class AgreementContentActivity:AppCompatActivity() {
                     "\n" +
                     "收集方式：调用系统相关接口自动采集\n" +
                     "\n" +
-                    "个人信息类型：个人常用设备信息、位置信息、网络信息、个人通信信息\n" +
+                    "个人信息类型：")
+            .append(personalInformation2)
+            .append("\n"+
                     "\n" +
                     "个人信息字段：设备信息：设备标识符（IMEI、IDFA、Android ID、MAC、OAID等相关信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息） 网络信息：IP地址，WiFi信息，基站信息等相关信息\n" +
                     "\n" +
@@ -208,7 +226,9 @@ class AgreementContentActivity:AppCompatActivity() {
                     "\n" +
                     "收集方式：调用系统相关接口自动采集\n" +
                     "\n" +
-                    "个人信息类型：个人常用设备信息、位置信息、网络信息、个人通信信息\n" +
+                    "个人信息类型：")
+            .append(personalInformation3)
+            .append("\n"+
                     "\n" +
                     "个人信息字段：设备信息：设备标识符（IMEI、IDFA、Android ID、MAC、OAID等相关信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）\n" +
                     "\n" +
@@ -223,7 +243,7 @@ class AgreementContentActivity:AppCompatActivity() {
                     "隐私政策：")
             .append(tt)
             .append("\n\n")
-            .append("6.微信SDK\n" +
+            .append("4.微信SDK\n" +
                     "\n" +
                     "提供方名称：腾讯\n" +
                     "\n" +
@@ -231,7 +251,9 @@ class AgreementContentActivity:AppCompatActivity() {
                     "\n" +
                     "收集方式：调用系统相关接口自动采集\n" +
                     "\n" +
-                    "个人信息类型：个人常用设备信息、位置信息、网络信息、个人通信信息\n" +
+                    "个人信息类型：")
+            .append(personalInformation4)
+            .append("\n"+
                     "\n" +
                     "个人信息字段：设备信息：设备标识符（IMEI、IDFA、Android ID、MAC、OAID等相关信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）\n" +
                     "\n" +
@@ -246,7 +268,7 @@ class AgreementContentActivity:AppCompatActivity() {
                     "隐私政策：")
             .append(weChat)
             .append("\n\n")
-            .append("7.QQSDK\n" +
+            .append("5.QQSDK\n" +
                     "\n" +
                     "提供方名称：腾讯\n" +
                     "\n" +
@@ -254,7 +276,9 @@ class AgreementContentActivity:AppCompatActivity() {
                     "\n" +
                     "收集方式：调用系统相关接口自动采集\n" +
                     "\n" +
-                    "个人信息类型：个人常用设备信息、位置信息、网络信息、个人通信信息\n" +
+                    "个人信息类型：")
+            .append(personalInformation5)
+            .append("\n"+
                     "\n" +
                     "个人信息字段：设备信息：设备标识符（IMEI、IDFA、Android ID、MAC、OAID等相关信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）\n" +
                     "\n" +

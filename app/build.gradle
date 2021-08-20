@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'AndResGuard'
 
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
@@ -64,7 +65,7 @@ android {
         _oppo {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "抠图P图神器",
+            manifestPlaceholders = [app_name_channel: "人像背景抠P图",
                                     CHANNEL_VALUE:"_oppo"]
         }
         _xiaomi {
@@ -150,4 +151,174 @@ dependencies {
     implementation project(':module_base')
     implementation project(':module_ad')
     implementation project(':module_matting')
+}
+
+andResGuard {
+    // mappingFile = file("./resource_mapping.txt")
+    mappingFile = null
+    use7zip = false
+    useSign = true
+    // 打开这个开关，会keep住所有资源的原始路径，只混淆资源的名字
+    keepRoot = false
+    // 设置这个值，会把arsc name列混淆成相同的名字，减少string常量池的大小
+    fixedResName = "arg"
+    // 打开这个开关会合并所有哈希值相同的资源，但请不要过度依赖这个功能去除去冗余资源
+    mergeDuplicatedRes = true
+    whiteList = [
+            // for your icon
+            "R.drawable.icon",
+            // for fabric
+            "R.string.com.crashlytics.*",
+            // for google-services
+            "R.string.google_app_id",
+            "R.string.gcm_defaultSenderId",
+            "R.string.default_web_client_id",
+            "R.string.ga_trackingId",
+            "R.string.firebase_database_url",
+            "R.string.google_api_key",
+            "R.string.google_crash_reporting_api_key",
+            //头条
+            "R.anim.tt_dislike_animation_dismiss"	                                            ,
+            "R.anim.tt_dislike_animation_show"	                                                ,
+            "R.attr.alpha"	                                                                    ,
+            "R.attr.coordinatorLayoutStyle"	                                                    ,
+            "R.attr.font"	                                                                    ,
+            "R.attr.font*"	                                                                ,
+            "R.attr.keylines"	                                                                ,
+            "R.attr.layout_anchor"	                                                            ,
+            "R.attr.layout_anchorGravity"	                                                    ,
+            "R.attr.layout_behavior"	                                                        ,
+            "R.attr.layout_dodgeInsetEdges"	                                                    ,
+            "R.attr.layout_insetEdge"	                                                        ,
+            "R.attr.layout_keyline"	                                                            ,
+            "R.attr.statusBarBackground"	                                                    ,
+            "R.attr.ttcIndex"	                                                                ,
+            "R.color.notification_action_color_filter"	                                        ,
+            "R.color.notification_icon_bg_color"	                                            ,
+            "R.color.notification_material_background_media_default_color"	                    ,
+            "R.color.primary_text_default_material_dark"	                                    ,
+            "R.color.ripple_material_light"	                                                    ,
+            "R.color.secondary_text_default_material_dark"	                                    ,
+            "R.color.secondary_text_default_material_light"	                                    ,
+            "R.color.tt*"	                                                ,
+            "R.dimen.compat_*"	                                ,
+            "R.dimen.notification_*"	                                        ,
+            "R.dimen.subtitle_*"	                                                ,
+            "R.dimen.tt_video_*"	                                        ,
+            "R.drawable.notification_*"	                                                ,
+            "R.drawable.notify_panel_notification_icon_bg"	                                    ,
+            "R.drawable.tt*"	                                                ,
+            "R.id.action0"	                                                                    ,
+            "R.id.action_container"	                                                            ,
+            "R.id.action_divider"	                                                            ,
+            "R.id.action_image"	                                                                ,
+            "R.id.action_text"	                                                                ,
+            "R.id.actions"	                                                                    ,
+            "R.id.async"	                                                                    ,
+            "R.id.blocking"	                                                                    ,
+            "R.id.bottom"	                                                                    ,
+            "R.id.cancel_action"	                                                            ,
+            "R.id.cancel_tv"	                                                                ,
+            "R.id.chronometer"	                                                                ,
+            "R.id.confirm_tv"	                                                                ,
+            "R.id.dash_line"	                                                                ,
+            "R.id.end"	                                                                        ,
+            "R.id.end_padder"	                                                                ,
+            "R.id.forever"	                                                                    ,
+            "R.id.icon"	                                                                        ,
+            "R.id.icon_group"	                                                                ,
+            "R.id.info"	                                                                        ,
+            "R.id.italic"	                                                                    ,
+            "R.id.iv_app_icon"	                                                                ,
+            "R.id.iv_detail_back"	                                                            ,
+            "R.id.iv_privacy_back"	                                                            ,
+            "R.id.left"	                                                                        ,
+            "R.id.line"	                                                                        ,
+            "R.id.line1"	                                                                    ,
+            "R.id.line3"	                                                                    ,
+            "R.id.ll_download"	                                                                ,
+            "R.id.log_switcher"	                                                                ,
+            "R.id.media_actions"	                                                            ,
+            "R.id.message_tv"	                                                                ,
+            "R.id.none"	                                                                        ,
+            "R.id.normal"	                                                                    ,
+            "R.id.notification_background"	                                                    ,
+            "R.id.notification_main_column"	                                                    ,
+            "R.id.notification_main_column_container"	                                        ,
+            "R.id.permission_list"	                                                            ,
+            "R.id.privacy_webview"	                                                            ,
+            "R.id.right"	                                                                    ,
+            "R.id.right_icon"	                                                                ,
+            "R.id.right_side"	                                                                ,
+            "R.id.start"	                                                                    ,
+            "R.id.status_bar_latest_event_content"	                                            ,
+            "R.id.tag_transition_group"	                                                        ,
+            "R.id.tag_unhandled_key_event_manager"	                                            ,
+            "R.id.tag_unhandled_key_listeners"	                                                ,
+            "R.id.text"	                                                                        ,
+            "R.id.text2"	                                                                    ,
+            "R.id.time"	                                                                        ,
+            "R.id.title"	                                                                    ,
+            "R.id.title_bar"	                                                                ,
+            "R.id.top"	                                                                        ,
+            "R.id.tt*"	                                                    ,
+            "R.id.tv_app_detail"	                                                            ,
+            "R.id.tv_app_developer"	                                                            ,
+            "R.id.tv_app_name"	                                                                ,
+            "R.id.tv_app_privacy"	                                                            ,
+            "R.id.tv_app_version"	                                                            ,
+            "R.id.tv_empty"	                                                                    ,
+            "R.id.tv_give_up"	                                                                ,
+            "R.id.tv_permission_description"	                                                ,
+            "R.id.tv_permission_title"	                                                        ,
+            "R.id.web_frame"	                                                                ,
+            "R.id.x86_support"	                                                                ,
+            "R.integer.cancel_button_image_alpha"	                                            ,
+            "R.integer.status_bar_notification_info_maxnum"	                                    ,
+            "R.integer.tt_video_progress_max"	                                                ,
+            "R.layout.network_ttnet_inner_debug_activity"	                                    ,
+            "R.layout.notification_action"	                                                    ,
+            "R.layout.notification_*"	                                        ,
+            "R.layout.tt_*"	                                            ,
+            "R.layout.ttdownloader*"	                                            ,
+            "R.string.app_name"	                                                                ,
+            "R.string.hours_ago"	                                                            ,
+            "R.string.just_now"	                                                                ,
+            "R.string.minutes_ago"	                                                            ,
+            "R.string.status_bar_notification_info_overflow"	                                ,
+            "R.string.tt_*"	                                                            ,
+            "R.style.EditTextStyle"	                                                            ,
+            "R.style.TextAppearance_Compat_Notification*"	                        ,
+            "R.style.Theme_Dialog_TTDownload"	                                                ,
+            "R.style.Theme_Dialog_TTDownloadOld"	                                            ,
+            "R.style.Widget_Compat_NotificationActionContainer"	                                ,
+            "R.style.Widget_Compat_NotificationActionText"	                                    ,
+            "R.style.Widget_Support_CoordinatorLayout"	                                        ,
+            "R.style.quick_option_dialog"	                                                    ,
+            "R.style.tt_*"	                                                        ,
+            "R.style.ttdownloader_translucent_dialog"	                                        ,
+            //广点通
+            "R.drawable.gdt*"
+    ]
+    compressFilePattern = [
+            "*.png",
+            "*.jpg",
+            "*.jpeg",
+            "*.gif",
+    ]
+//    sevenzip {
+//        artifact = 'com.tencent.mm:SevenZip:1.2.17'
+//    //   path = "/usr/local/bin/7za"
+//    }
+
+    /**
+     * 可选： 如果不设置则会默认覆盖assemble输出的apk
+     **/
+    // finalApkBackupPath = "${project.rootDir}/final.apk"
+
+    /**
+     * 可选: 指定v1签名时生成jar文件的摘要算法
+     * 默认值为“SHA-1”
+     **/
+    // digestalg = "SHA-256"
 }

@@ -106,7 +106,7 @@ class SplashActivity : AppCompatActivity() {
                     override fun onNext(t: AdsConfig) {
                         val gson = Gson()
                         SPUtil.getInstance().putString(ADConstants.START_PAGE, gson.toJson(t.data?.start_page))
-                        SPUtil.getInstance().putString(ADConstants.MAKEGOLDCOIN_PAGE, gson.toJson(t.data?.makegoldcoin_page))
+                        SPUtil.getInstance().putString(ADConstants.BACKGROUND_PAGE, gson.toJson(t.data?.background_page))
                         SPUtil.getInstance().putString(ADConstants.EXIT_PAGE, gson.toJson(t.data?.exit_page))
 
                         t.data?.Advertisement?.also {
@@ -116,7 +116,7 @@ class SplashActivity : AppCompatActivity() {
                                     .putString("kTouTiaoChaPingKey",it.kTouTiaoChaPingKey)
                                     .putString("kTouTiaoSeniorKey",it.kTouTiaoSeniorKey)
                                     .putString("kTouTiaoJiLiKey",it.kTouTiaoJiLiKey)
-                                    .putString("kTouTiaoSmallSeniorKey",it.kTouTiaoSmallSeniorKey)
+                                    .putString("ktouTiaoFullscreenvideoKey",it.ktouTiaoFullscreenvideoKey)
 
                                     .putString("kGDTMobSDKAppKey",it.kGDTMobSDKAppKey)
                                     .putString("kGDTMobSDKChaPingKey",it.kGDTMobSDKChaPingKey)
@@ -124,7 +124,7 @@ class SplashActivity : AppCompatActivity() {
                                     .putString("kGDTMobSDKBannerKey",it.kGDTMobSDKBannerKey)
                                     .putString("kGDTMobSDKNativeKey",it.kGDTMobSDKNativeKey)
                                     .putString("kGDTMobSDKJiLiKey",it.kGDTMobSDKJiLiKey)
-                                    .putString("kGDTMobSDKSmallNativeKey",it.kGDTMobSDKSmallNativeKey)
+                                    .putString("kGDTMobSDKNativeSmallKey",it.kGDTMobSDKNativeSmallKey)
                         }
                     }
 

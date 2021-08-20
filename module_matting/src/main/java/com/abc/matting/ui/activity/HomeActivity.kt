@@ -65,7 +65,7 @@ class HomeActivity : BaseActivity() {
             }
         }
 
-        view_pager.adapter =object : FragmentStatePagerAdapter(supportFragmentManager,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+        view_pager.adapter =object : FragmentStatePagerAdapter(supportFragmentManager){
             override fun getCount(): Int {
                 return fragments.size
             }
@@ -122,6 +122,23 @@ class HomeActivity : BaseActivity() {
             }
 
         })
+
+//        if ((System.currentTimeMillis() - SPUtil.getInstance().getLong(Constants.SEE_VIDEO_TIME,0L))>1000*60*60*24){
+//            SPUtil.getInstance()
+//                .putBoolean("natural",false)
+//                .putBoolean("car",false)
+//                .putBoolean("game",false)
+//                .putBoolean("beauty",false)
+//                .putBoolean("star",false)
+//                .putBoolean("sports",false)
+//                .putBoolean("animal",false)
+//                .putBoolean("mov",false)
+//                .putBoolean("artistic",false)
+//                .putBoolean("anime",false)
+//                .putBoolean("text",false)
+//                .putBoolean("couples",false)
+//                .putBoolean("contracted",false)
+//        }
     }
 
     private fun getData(){

@@ -67,7 +67,7 @@ class AdManager(
                 spreadScreenBean = pageBean?.spread_screen
                 bannerScreenBean = pageBean?.banner_screen
                 insertScreenBean = pageBean?.insert_screen
-                native_advertising = pageBean?.native_screen
+                native_advertising = pageBean?.native_advertising
             }
 
             if (spreadScreenBean != null) {
@@ -313,7 +313,7 @@ class AdManager(
     }
 
     private fun executeNative(type: AD.AdType, originList: List<OriginBean>?) {
-        if (!pageBean!!.native_screen!!.status || !NetworkUtils.isConnected(activity.applicationContext)) {
+        if (!pageBean!!.native_advertising!!.status || !NetworkUtils.isConnected(activity.applicationContext)) {
             Log.e(TAG, "Native--$page---开关关闭，或者无网络不执行")
             return
         }

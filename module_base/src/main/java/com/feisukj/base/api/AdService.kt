@@ -12,8 +12,8 @@ import retrofit2.http.Query
  * QQ : 464955343
  */
 interface AdService {
-    @GET("/ytkapplicaton/ansWangZheLiBao")
-    fun getADConfig(@Query("name") name: String="com.twx.wangzhelibao",
+    @GET("/ytkapplicaton/twxPs")
+    fun getADConfig(@Query("name") name: String="com.twx.bucklediagram",
                     @Query("channel") channel: String,
                     @Query("version") version: String): Observable<AdsConfig>
 }

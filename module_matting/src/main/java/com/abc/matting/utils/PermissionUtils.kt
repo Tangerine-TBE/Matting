@@ -62,13 +62,15 @@ object PermissionUtils {
                 gotoMiUiPermission(context) //小米
             } else if (TextUtils.equals(brand.toLowerCase(), "meizu")) {
                 gotoMeiZuPermission(context)
-            } else if (TextUtils.equals(
-                    brand.toLowerCase(),
-                    "huawei"
-                ) || TextUtils.equals(brand.toLowerCase(), "honor")
-            ) {
-                gotoHuaWeiPermission(context)
-            } else {
+            }
+//            else if (TextUtils.equals(
+//                    brand.toLowerCase(),
+//                    "huawei"
+//                ) || TextUtils.equals(brand.toLowerCase(), "honor")
+//            ) {
+//                gotoHuaWeiPermission(context)
+//            }
+            else {
                 context.startActivity(
                     getAppDetailSettingIntent(
                         context

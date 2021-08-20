@@ -6,7 +6,11 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
+import com.feisukj.base.bean.ad.ADConstants
+import com.feisukj.base.bean.ad.TypeBean
+import com.feisukj.base.util.GsonUtils
 import com.feisukj.base.util.LogUtils
+import com.feisukj.base.util.SPUtil
 import com.luck.picture.lib.entity.LocalMedia
 import java.text.NumberFormat
 
@@ -101,5 +105,24 @@ object Utils {
         }
         cursor.close()
         return uri
+    }
+
+    /**
+     * @param groupName 壁纸类型
+     * 判断是否有权限设置(groupName)壁纸
+     * */
+    fun canSetBackground(groupName: String): Boolean{
+        return (System.currentTimeMillis()-SPUtil.getInstance().getLong(groupName, 0L))<1000*60*60*24// && SPUtil.getInstance().getBoolean(groupName)
+    }
+
+    /**
+     * 是否有广告
+     */
+    fun haveAD(): Boolean {
+        val str = SPUtil.getInstance().getString(ADConstants.START_PAGE)
+        var pageBean = TypeBean()
+        if (str == null || str == "") return false
+        pageBean = GsonUtils.parseObject(str, TypeBean::class.java)
+        return pageBean.spread_screen!!.status
     }
 }
