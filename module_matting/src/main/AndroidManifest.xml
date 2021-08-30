@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application>
-        <activity android:name=".ui.activity.ComicActivity2"
-            android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.OldActivity2"
             android:screenOrientation="portrait"/>
         <activity

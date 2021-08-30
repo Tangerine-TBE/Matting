@@ -256,6 +256,11 @@ class PortraitActivity : BaseActivity(),
                     return
                 }
                 val bitmap = getImage(path)
+                if (bitmap == null){
+                    ToastUtil.showToast("载入图片出错")
+                    finish()
+                    return
+                }
                 loadingDialog.show()
                 Thread {
                     var imageBase64 = ""
@@ -357,17 +362,18 @@ class PortraitActivity : BaseActivity(),
      * */
     private fun getImage(path: String): Bitmap {
         var bitmap = BitmapFactory.decodeFile(path)
-
-        if (bitmap.width < 2000 && bitmap.height < 2000)
+        if (bitmap == null)
+            return bitmap
+        if (bitmap.width < 1800 && bitmap.height < 1800)
             return bitmap
         else {
             bitmap = if (bitmap.width > bitmap.height) {
-                val s = 2000f / bitmap.width
+                val s = 1800f / bitmap.width
                 val h = (bitmap.height * s).toInt()
                 val w = (bitmap.width * s).toInt()
                 BitmapUtils.getBitmap(path, w, h)
             } else {
-                val s = 2000f / bitmap.height
+                val s = 1800f / bitmap.height
                 val h = (bitmap.height * s).toInt()
                 val w = (bitmap.width * s).toInt()
                 BitmapUtils.getBitmap(path, w, h)

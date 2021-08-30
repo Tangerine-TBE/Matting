@@ -69,7 +69,12 @@ class DoodleActivity : BaseActivity(), MySeekBar.MySeekBarCallback,
         cacheFileName = intent.getStringExtra(CACHE_FILE_NAME)?:""
         cachePath = intent.getStringExtra(CACHE_PATH)?:""
 
-        var bgBitmap = BitmapFactory.decodeFile(path)
+        val bgBitmap = BitmapFactory.decodeFile(path)
+        if(bgBitmap == null){
+            ToastUtil.showCenterToast("加载图片失败")
+            finish()
+            return
+        }
         mDoodle = DoodleViewWrapper(this, bgBitmap, mDoodleParams?.mOptimizeDrawing!!, object :
             IDoodleListener {
             /*

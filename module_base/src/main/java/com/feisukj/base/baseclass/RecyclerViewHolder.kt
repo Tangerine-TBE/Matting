@@ -90,6 +90,10 @@ class RecyclerViewHolder(view:View) : RecyclerView.ViewHolder(view) {
                 .into(getView(viewId))
     }
 
+    fun glideClean(view: ImageView){
+        Glide.with(context).clear(view)
+    }
+
     fun setImageSelect(viewId: Int,isSelect:Boolean){
         getView<ImageView>(viewId).isSelected=isSelect
     }

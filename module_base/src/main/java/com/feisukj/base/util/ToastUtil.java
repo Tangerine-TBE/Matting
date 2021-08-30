@@ -1,5 +1,6 @@
 package com.feisukj.base.util;
 
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,14 +57,24 @@ public class ToastUtil {
     }
 
     public static void showCenterToast(String s){
-        Toast toast = new Toast(BaseApplication.getApplication());
-        View view = LayoutInflater.from(BaseApplication.getApplication()).inflate(R.layout.toast_,null,false);
-        TextView textView = view.findViewById(R.id.tv_toast);
-        textView.setText(s);
-        toast.setView(view);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER,0,0);
-        toast.show();
+        if (Build.VERSION.SDK_INT<Build.VERSION_CODES.R){
+            try{
+                Toast toast = new Toast(BaseApplication.getApplication());
+                View view = LayoutInflater.from(BaseApplication.getApplication()).inflate(R.layout.toast_,null,false);
+                TextView textView = view.findViewById(R.id.tv_toast);
+                textView.setText(s);
+                toast.setView(view);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.show();
+            }catch (Exception e){
+                e.printStackTrace();
+                Toast.makeText(BaseApplication.getApplication(),s,Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(BaseApplication.getApplication(),s,Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     /*

@@ -60,6 +60,13 @@ class PortraitBackgroundAdapter: RecyclerView.Adapter<RecyclerViewHolder>(),
         }
     }
 
+    override fun onViewRecycled(holder: RecyclerViewHolder) {
+        super.onViewRecycled(holder)
+        val img = holder.getView<ImageView>(R.id.image_big)
+        if (img!=null)
+            holder.glideClean(img)
+    }
+
     override fun getItemCount(): Int {
         return mList.size
     }
