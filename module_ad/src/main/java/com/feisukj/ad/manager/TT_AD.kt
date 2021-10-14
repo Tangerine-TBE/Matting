@@ -129,6 +129,10 @@ class TT_AD : AbsADParent() {
                 mIsLoaded = true
             }
 
+            override fun onRewardVideoCached(p0: TTRewardVideoAd?) {
+
+            }
+
             override fun onError(p0: Int, p1: String?) {
                 LogUtils.e("${p1}")
             }
@@ -460,6 +464,10 @@ class TT_AD : AbsADParent() {
                 rewardVideoCallback?.onLoadVideoCached()
                 isLoadVideoAd=false
                 videoTTAd?.showRewardVideoAd(activity)
+            }
+
+            override fun onRewardVideoCached(p0: TTRewardVideoAd?) {
+
             }
 
             override fun onError(p0: Int, p1: String?) {

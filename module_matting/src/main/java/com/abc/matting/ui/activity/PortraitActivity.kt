@@ -274,14 +274,16 @@ class PortraitActivity : BaseActivity(),
                             }
 
                         } else
-                            EffectUtils.intelligentCutout(path)
+                            EffectUtils.portraitCutout(Base64Utils.bitmapToBase64(bitmap))
+//                            EffectUtils.intelligentCutout(path)
                         LogUtils.e("---------------url = $response")
                         val obj = JSONObject(response)
                         imageBase64 = if (type == TYPE_PORTRAIT){
                             obj.getString("ResultImage")
                         }  else{
-                            val data = obj.getJSONObject("data")
-                            data.getString("imageBase64")
+                            obj.getString("ResultImage")
+//                            val data = obj.getJSONObject("data")
+//                            data.getString("imageBase64")
                         }
                     } catch (e: Exception) {
                         e.printStackTrace()

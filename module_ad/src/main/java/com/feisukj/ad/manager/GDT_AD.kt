@@ -110,7 +110,7 @@ class GDT_AD : AbsADParent() {
 
             }
 
-            override fun onReward() {//发放奖励
+            override fun onReward(p0: MutableMap<String, Any>?) {//发放奖励
 
             }
 
@@ -382,6 +382,14 @@ class GDT_AD : AbsADParent() {
             }
 
             override fun onADClosed() {
+
+            }
+
+            override fun onRenderSuccess() {
+
+            }
+
+            override fun onRenderFail() {
 
             }
 

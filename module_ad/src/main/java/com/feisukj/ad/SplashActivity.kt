@@ -62,7 +62,7 @@ class SplashActivity : AppCompatActivity() {
                         UMConfigure.init(BaseApplication.application, "60fe3217328eac0d2eb6538c", BaseConstant.channel, UMConfigure.DEVICE_TYPE_PHONE, null)
                     }
 
-                    GDTADManager.getInstance().initWith(BaseApplication.application, ADConstants.kGDTMobSDKAppKey)
+//                    GDTADManager.getInstance().initWith(BaseApplication.application, ADConstants.kGDTMobSDKAppKey)
 
                     TTAdManagerHolder.init(BaseApplication.application)
                     dialog.dismiss()
@@ -83,7 +83,7 @@ class SplashActivity : AppCompatActivity() {
                 UMConfigure.init(BaseApplication.application, "60fe3217328eac0d2eb6538c", BaseConstant.channel, UMConfigure.DEVICE_TYPE_PHONE, null)
             }
 
-            GDTADManager.getInstance().initWith(BaseApplication.application, ADConstants.kGDTMobSDKAppKey)
+//            GDTADManager.getInstance().initWith(BaseApplication.application, ADConstants.kGDTMobSDKAppKey)
 
             TTAdManagerHolder.init(BaseApplication.application)
             askPermissions()

@@ -100,9 +100,9 @@ android {
 //    api rootProject.ext.dependencies["filedownloader"]
 
         //友盟统计
-        api  'com.umeng.umsdk:common:9.3.8'// 必选
-        api  'com.umeng.umsdk:asms:1.2.2'// 必选
-        api 'com.umeng.umsdk:apm:1.2.0' // 错误分析升级为独立产品U-APM可按需集成，可选
+        api  'com.umeng.umsdk:common:9.4.2'// 必选
+        api  'com.umeng.umsdk:asms:1.4.1'// 必选
+        api 'com.umeng.umsdk:apm:1.4.2' // 错误分析升级为独立产品U-APM可按需集成，可选
         api  'com.umeng.umsdk:abtest:1.0.0'//使用U-App中ABTest能力，可选
 
         api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
@@ -113,6 +113,9 @@ android {
 //        api "com.sun.xml.bind:jaxb-core:2.2.11"
 //        api "com.sun.xml.bind:jaxb-impl:2.2.11"
         api group: 'xerces', name: 'xercesImpl', version: '2.12.0'
+
+        api 'com.pangle.cn:ads-sdk:3.9.0.2'
+        api 'com.qq.e.union:union:4.400.1270'
 
 
         /********第三方依赖:在需要单独调用的module添加即可，如果放开的话，所有module都可以调用*********/

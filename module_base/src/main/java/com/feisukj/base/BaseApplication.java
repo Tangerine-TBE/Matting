@@ -8,7 +8,9 @@ import android.os.Looper;
 import androidx.multidex.MultiDex;
 
 import com.feisukj.base.baseclass.ForegroundObserver;
+import com.feisukj.base.util.PackageUtils;
 import com.feisukj.base.util.SPUtil;
+import com.umeng.commonsdk.UMConfigure;
 
 /**
  * Author : Gupingping
@@ -37,7 +39,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         handler = new Handler(Looper.getMainLooper());
         SPUtil.init(this);
-
+        UMConfigure.preInit(application,"60fe3217328eac0d2eb6538c", PackageUtils.getAppMetaData(application, "CHANNEL"));
         ForegroundObserver.init(application);
     }
 
