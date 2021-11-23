@@ -355,7 +355,7 @@ class AgreementContentActivity:AppCompatActivity() {
                     " \n" +
                     " 客服邮箱：$email\n" +
                     "\n" +
-                    "最后更新时间：2019年9月24日\n")
+                    "最后更新时间：2021年11月23日\n")
         return stringBuilder
     }
 }

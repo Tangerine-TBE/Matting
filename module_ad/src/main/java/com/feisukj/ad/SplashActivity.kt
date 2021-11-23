@@ -19,6 +19,7 @@ import com.feisukj.base.util.SPUtil
 import com.google.gson.Gson
 import com.gyf.immersionbar.ImmersionBar
 import com.qq.e.comm.managers.GDTADManager
+import com.qq.e.comm.managers.GDTAdSdk
 import com.umeng.commonsdk.UMConfigure
 import com.yanzhenjie.permission.AndPermission
 import io.reactivex.Observer
@@ -86,6 +87,7 @@ class SplashActivity : AppCompatActivity() {
 //            GDTADManager.getInstance().initWith(BaseApplication.application, ADConstants.kGDTMobSDKAppKey)
 
             TTAdManagerHolder.init(BaseApplication.application)
+            GDTAdSdk.init(BaseApplication.application,ADConstants.kGDTMobSDKAppKey)
             askPermissions()
         }
     }

@@ -31,6 +31,7 @@ import com.feisukj.base.baseclass.BaseActivity
 import com.feisukj.base.util.DeviceUtils
 import com.feisukj.base.util.LogUtils
 import com.feisukj.base.util.lg
+import com.hjq.permissions.Permission
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
@@ -146,11 +147,12 @@ class ComicActivity : BaseActivity() {
                 mCameraDevice?.close()
                 mCameraCaptureSession?.close()
                 canInitCamera = false
-                PermissionUtils.askStorageAndCameraPermission(this){
+                PermissionUtils.askPermission(this, Permission.MANAGE_EXTERNAL_STORAGE){
                     PictureSelector.create(this)
                         .openGallery(PictureMimeType.ofImage())
                         .imageEngine(GlideEngine.createGlideEngine())
                         .isPreviewImage(true)
+                        .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                         .setPictureUIStyle(Resources.getWhiteStyle())
                         .selectionMode(PictureConfig.SINGLE)

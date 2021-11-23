@@ -15,6 +15,7 @@ import com.feisukj.base.BaseConstant
 import com.feisukj.base.baseclass.BaseActivity
 import com.feisukj.base.util.BitmapUtils
 import com.feisukj.base.util.ToastUtil
+import com.hjq.permissions.Permission
 import jp.co.cyberagent.android.gpuimage.GPUImage
 import jp.co.cyberagent.android.gpuimage.filter.*
 import kotlinx.android.synthetic.main.activity_adjust.*
@@ -106,7 +107,7 @@ class AdjustActivity : BaseActivity(), AdjustAdapter.AdjustAdapterCallback,
 
         yes.setOnClickListener {
             yes.isEnabled = false
-            PermissionUtils.askStorageAndCameraPermission(this){
+            PermissionUtils.askPermission(this,Permission.MANAGE_EXTERNAL_STORAGE){
                 if (cachePath != "" && cacheFileName != ""){
                     val rootFile = File(cachePath)
                     if (!rootFile.exists())
@@ -127,7 +128,7 @@ class AdjustActivity : BaseActivity(), AdjustAdapter.AdjustAdapterCallback,
                     if (!GetDataUtils.isVip()){
                         startActivity(Intent(this,PayActivity::class.java))
                         yes.isEnabled = true
-                        return@askStorageAndCameraPermission
+                        return@askPermission
                     }
                     val fileName = "${System.currentTimeMillis()}.jpg"
                     val path = BaseConstant.savePath+"/"+fileName

@@ -115,11 +115,12 @@ class PortraitActivity : BaseActivity(),
         stickerView.isLocked = false
         stickerView.isConstrained = true
 
-        PermissionUtils.askStorageAndCameraPermission(this) {
+        PermissionUtils.askPermission(this,Permission.MANAGE_EXTERNAL_STORAGE) {
             PictureSelector.create(this)
                 .openGallery(PictureMimeType.ofImage())
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isPreviewImage(false)
+                .isCamera(false)
                 .setPictureUIStyle(Resources.getWhiteStyle())
                 .selectionMode(PictureConfig.SINGLE)
                 .forResult(CUTOUT_CODE)
@@ -388,11 +389,12 @@ class PortraitActivity : BaseActivity(),
         when (position) {
             0 -> {
                 //相册
-                PermissionUtils.askStorageAndCameraPermission(this) {
+                PermissionUtils.askPermission(this,Permission.MANAGE_EXTERNAL_STORAGE) {
                     PictureSelector.create(this)
                         .openGallery(PictureMimeType.ofImage())
                         .imageEngine(GlideEngine.createGlideEngine())
                         .isPreviewImage(false)
+                        .isCamera(false)
                         .setPictureUIStyle(Resources.getWhiteStyle())
                         .selectionMode(PictureConfig.SINGLE)
                         .forResult(BG_CODE)

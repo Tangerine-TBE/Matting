@@ -11,7 +11,7 @@ import com.abc.matting.bean.PictureBean
 import com.abc.matting.ui.activity.*
 import com.abc.matting.utils.GlideEngine
 import com.abc.matting.utils.PermissionUtils
-import com.abc.matting.utils.PermissionUtils.askStorageAndCameraPermission
+import com.abc.matting.utils.PermissionUtils.askPermission
 import com.feisukj.base.baseclass.BaseFragment
 import com.feisukj.base.util.ToastUtil
 import com.hjq.permissions.Permission
@@ -56,7 +56,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
     private fun initClickEven(){
         iv_anim.setOnClickListener {
-            PermissionUtils.askPermission(mActivity,Permission.CAMERA){
+            askPermission(mActivity,Permission.CAMERA){
                 val intent = Intent(mActivity,OldActivity2::class.java)
                 intent.putExtra(OldActivity2.typeKey,OldActivity2.TYPE_COMIC)
                 startActivity(intent)
@@ -75,7 +75,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 //                    .selectionMode(PictureConfig.SINGLE)
 //                    .forResult(PORTRAIT_MATTING_CODE)
 //            }
-            askStorageAndCameraPermission(mActivity){
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 val intent = Intent(mActivity,PortraitActivity::class.java)
                 intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_PORTRAIT)
                 startActivity(intent)
@@ -89,7 +89,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //智能抠图
         view1.setOnClickListener {
-            askStorageAndCameraPermission(mActivity){
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 val intent = Intent(mActivity,PortraitActivity::class.java)
                 intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_INTELLIGENT)
                 startActivity(intent)
@@ -103,11 +103,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //美化图片
         view3.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
@@ -117,11 +118,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //裁剪
         tailoring.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
@@ -132,11 +134,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //滤镜
         filter.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
                     .forResult(FILTER_CODE)
@@ -144,11 +147,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         }
         //调整
         adjust.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
                     .forResult(ADJUST_CODE)
@@ -157,11 +161,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //添加文字
         addText.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
@@ -172,11 +177,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //放大缩小
         scale.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
@@ -186,11 +192,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //贴纸
         stickers.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)
@@ -200,11 +207,12 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //涂鸦
         doodle.setOnClickListener {
-            askStorageAndCameraPermission(mActivity) {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
                     .isPreviewImage(true)
+                    .isCamera(false)
 //                    .freeStyleCropEnabled(true)
                     .setPictureUIStyle(getWhiteStyle())
                     .selectionMode(PictureConfig.SINGLE)

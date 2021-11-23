@@ -13,6 +13,7 @@ import com.feisukj.base.BaseConstant
 import com.feisukj.base.baseclass.BaseActivity
 import com.feisukj.base.util.BitmapUtils
 import com.feisukj.base.util.ToastUtil
+import com.hjq.permissions.Permission
 import jp.co.cyberagent.android.gpuimage.GPUImage
 import kotlinx.android.synthetic.main.activity_filter.*
 import java.io.File
@@ -57,7 +58,7 @@ class FilterActivity : BaseActivity(), FilterAdapter.FilterCallback {
 
         yes.setOnClickListener {
             yes.isEnabled = false
-            PermissionUtils.askStorageAndCameraPermission(this){
+            PermissionUtils.askPermission(this,Permission.MANAGE_EXTERNAL_STORAGE){
                 if (cachePath != "" && cacheFileName != ""){
                     val rootFile = File(cachePath)
                     if (!rootFile.exists())
