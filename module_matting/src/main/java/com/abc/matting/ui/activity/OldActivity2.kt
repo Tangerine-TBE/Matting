@@ -13,6 +13,7 @@ import com.abc.matting.utils.*
 import com.abc.matting.utils.camera.Camera2Loader
 import com.abc.matting.utils.camera.CameraLoader
 import com.abc.matting.utils.camera.doOnLayout
+import com.feisukj.base.BaseApplication
 import com.feisukj.base.baseclass.BaseActivity
 import com.feisukj.base.util.LogUtils
 import com.feisukj.base.util.ToastUtil
@@ -157,7 +158,13 @@ class OldActivity2 : BaseActivity(), SelectAgeDialog.SelectAgeCallback,
         super.onResume()
         if (needCamera){
             gpuImageView.doOnLayout {
-                cameraLoader.onResume(it.width, it.height)
+                try {
+                    BaseApplication.handler.postDelayed({
+                        cameraLoader.onResume(it.width, it.height)
+                    },500)
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
             }
         }
     }

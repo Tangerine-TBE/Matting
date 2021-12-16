@@ -92,4 +92,9 @@ public class Constants {
     public static final String DELETE_USER = "passport.unregister";
 
 
+
+    //
+    public static final Long MAX_PIC_FILE = 1024*1024*5L;
+
+
 }

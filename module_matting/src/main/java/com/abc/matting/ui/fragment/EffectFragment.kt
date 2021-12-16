@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_effect.*
 
 class EffectFragment : BaseFragment() {
 
-    private lateinit var anim: AnimationDrawable
+    private var anim: AnimationDrawable? = null
 
     override fun getLayoutId(): Int = R.layout.fragment_effect
 
@@ -75,7 +75,7 @@ class EffectFragment : BaseFragment() {
     }
 
     fun startAnim(){
-        anim.stop()
-        anim.start()
+        anim?.stop()
+        anim?.start()
     }
 }

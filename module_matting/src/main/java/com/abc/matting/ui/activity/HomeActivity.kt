@@ -22,6 +22,7 @@ import com.feisukj.base.baseclass.BaseFragment
 import com.feisukj.base.util.DateUtils
 import com.feisukj.base.util.LogUtils
 import com.feisukj.base.util.SPUtil
+import com.feisukj.base.util.ToastUtil
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureMimeType
 import com.luck.picture.lib.tools.PictureFileUtils
@@ -179,6 +180,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,CropActivity::class.java)
                 intent.putExtra(CropActivity.IMG_PATH,path)
                 startActivityForResult(intent, GO)
@@ -187,6 +192,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,AddTextActivity::class.java)
                 intent.putExtra(AddTextActivity.IMG_URI_KEY,path)
                 startActivityForResult(intent, GO)
@@ -195,6 +204,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,ScaleActivity::class.java)
                 intent.putExtra(ScaleActivity.IMG_URI_KEY,path)
                 startActivityForResult(intent, GO)
@@ -203,6 +216,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,StickerActivity::class.java)
                 intent.putExtra(StickerActivity.IMG_URI_KEY,path)
                 startActivityForResult(intent, GO)
@@ -211,6 +228,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,FilterActivity::class.java)
                 intent.putExtra(FilterActivity.IMG_PATH,path)
                 startActivity(intent)
@@ -219,6 +240,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,AdjustActivity::class.java)
                 intent.putExtra(AdjustActivity.IMG_PATH,path)
                 startActivity(intent)
@@ -227,6 +252,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,DoodleActivity::class.java)
                 intent.putExtra(DoodleActivity.IMG_PATH,path)
                 startActivityForResult(intent,GO)
@@ -235,6 +264,10 @@ class HomeActivity : BaseActivity() {
                 val path = getReal(PictureSelector.obtainMultipleResult(data))
                 if (path == "")
                     return
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    return
+                }
                 val intent = Intent(this,BeautyActivity::class.java)
                 intent.putExtra(BeautyActivity.IMG_PATH_KEY,path)
                 startActivity(intent)

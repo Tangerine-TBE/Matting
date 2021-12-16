@@ -60,6 +60,15 @@
                 android:resource="@xml/gdt_file_path" />
         </provider>
         <!--广点通广告需要 end-->
+        <provider
+            android:authorities="${applicationId}.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gdt_file_path"/>
+        </provider>
 
         <!--头条广告 start -->
         <provider

@@ -52,8 +52,12 @@ public class LoginUtils {
      * */
     public static void otherLogin(){
         Map<String,String> map = new TreeMap<>();
-        map.put("openId", SPUtil.getInstance().getString(Constants.OPENID));
-        map.put("type", SPUtil.getInstance().getString(Constants.LOGIN_TYPE));
+        String openId = SPUtil.getInstance().getString(Constants.OPENID);
+        String type = SPUtil.getInstance().getString(Constants.LOGIN_TYPE);
+        if (openId.isEmpty() || type.isEmpty())
+            return;
+        map.put("openId",openId );
+        map.put("type", type);
         //注册成功后登录
         HttpUtils.getData(map, Constants.LOGIN_THIRD, new HttpUtils.RequestCallback() {
             @Override

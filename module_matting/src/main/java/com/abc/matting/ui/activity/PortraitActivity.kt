@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.text.Layout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abc.matting.Constants
 import com.abc.matting.R
 import com.abc.matting.Resources
 import com.abc.matting.adapter.PortraitBackgroundAdapter
@@ -256,6 +257,11 @@ class PortraitActivity : BaseActivity(),
                     finish()
                     return
                 }
+                if (File(path).length()>Constants.MAX_PIC_FILE){
+                    ToastUtil.showToast("图片太大了，选择小一点的图片吧")
+                    finish()
+                    return
+                }
                 val bitmap = getImage(path)
                 if (bitmap == null){
                     ToastUtil.showToast("载入图片出错")
@@ -457,6 +463,10 @@ class PortraitActivity : BaseActivity(),
     }
 
     override fun clickBackgroundItem(item: BackgroundBean) {
+        if (item.imgSrc == null){
+            ToastUtil.showCenterToast("出错了，请重试")
+            return
+        }
         val bitmap = adjust(BitmapUtils.getBitmapFromAssetsFile(item.imgSrc))
         if (bitmap == null){
             ToastUtil.showCenterToast("出错了，请重试")

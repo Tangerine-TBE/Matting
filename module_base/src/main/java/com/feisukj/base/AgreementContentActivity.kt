@@ -146,9 +146,9 @@ class AgreementContentActivity:AppCompatActivity() {
                 "       \n" +
                 "信息的收集和使用\n" +
                 "\n" +
-                "1. 读取手机状态和身份\n" +
+                "1. 读取通话状态和移动网络信息\n" +
                 "\n" +
-                "友盟统计需要，获取设备唯一标识信息，用于统计用户使用情况\n" +
+                "${packageManager.getApplicationLabel(applicationInfo)}需要该权限来获取用户手机网络状态\n" +
                 "\n" +
                 "2.访问手机存储设备\n" +
                 "\n" +

@@ -13,7 +13,9 @@ import android.util.Log
 import android.util.Size
 import android.view.Surface
 import androidx.annotation.RequiresApi
+import com.abc.matting.utils.PermissionUtils
 import com.feisukj.base.BaseApplication
+import com.hjq.permissions.Permission
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class Camera2Loader(private val activity: Activity) : CameraLoader() {
@@ -79,8 +81,10 @@ class Camera2Loader(private val activity: Activity) : CameraLoader() {
     private fun setUpCamera() {
         val cameraId = getCameraId(cameraFacing) ?: return
         try {
-            cameraManager.openCamera(cameraId, CameraDeviceCallback(), null)
-        } catch (e: CameraAccessException) {
+            PermissionUtils.askPermission(activity,Permission.CAMERA){
+                cameraManager.openCamera(cameraId, CameraDeviceCallback(), null)
+            }
+        } catch (e: Exception) {
             Log.e(TAG, "Opening camera (ID: $cameraId) failed.")
         }
     }
