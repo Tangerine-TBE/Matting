@@ -45,15 +45,25 @@ class HomeActivity : BaseActivity() {
     val settingFragment : SettingFragment by lazy {
         SettingFragment()
     }
-    val fragments : Array<BaseFragment> = arrayOf(mainFragment,effectFragment,settingFragment)
-    val titles = arrayOf("首页","人脸特效","个人")
-    val icons = arrayOf(R.drawable.selector_tab_main,R.drawable.selector_tab_effect,R.drawable.selector_tab_setting)
+    val fragments : MutableList<BaseFragment> = arrayListOf()//arrayOf(mainFragment,effectFragment,settingFragment)
+    val titles: MutableList<String> = arrayListOf()//arrayOf("首页","人脸特效","个人")
+    val icons: MutableList<Int> = arrayListOf()//arrayOf(R.drawable.selector_tab_main,R.drawable.selector_tab_effect,R.drawable.selector_tab_setting)
     private val mList: MutableList<PictureBean> = arrayListOf()
 
     override fun getLayoutId(): Int = R.layout.activity_home
 
     override fun initView() {
         mImmersionBar.statusBarColor(R.color.theme_bg).statusBarDarkFont(true).init()
+
+        if (BaseConstant.channel == "_xiaomi"){
+            fragments.addAll(listOf(mainFragment,settingFragment))
+            titles.addAll(listOf("首页","个人"))
+            icons.addAll(listOf(R.drawable.selector_tab_main,R.drawable.selector_tab_setting))
+        }else{
+            fragments.addAll(listOf(mainFragment,effectFragment,settingFragment))
+            titles.addAll(listOf("首页","人脸特效","个人"))
+            icons.addAll(listOf(R.drawable.selector_tab_main,R.drawable.selector_tab_effect,R.drawable.selector_tab_setting))
+        }
 
         //进入软件更新用户信息
         if (SPUtil.getInstance().getBoolean(Constants.IS_LOGIN,false)){

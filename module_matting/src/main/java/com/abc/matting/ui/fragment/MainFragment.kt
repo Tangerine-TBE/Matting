@@ -12,6 +12,7 @@ import com.abc.matting.ui.activity.*
 import com.abc.matting.utils.GlideEngine
 import com.abc.matting.utils.PermissionUtils
 import com.abc.matting.utils.PermissionUtils.askPermission
+import com.feisukj.base.BaseConstant
 import com.feisukj.base.baseclass.BaseFragment
 import com.feisukj.base.util.ToastUtil
 import com.hjq.permissions.Permission
@@ -46,6 +47,15 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         adapter.setCallback(this)
         recycler.layoutManager = GridLayoutManager(context,4)
         recycler.adapter = adapter
+
+        if (BaseConstant.channel == "_xiaomi"){
+            gone(iv_anim)
+            visible(iv_banner)
+        }else{
+            gone(iv_banner)
+            visible(iv_anim)
+        }
+
         initClickEven()
     }
 
@@ -59,6 +69,14 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
             askPermission(mActivity,Permission.CAMERA){
                 val intent = Intent(mActivity,OldActivity2::class.java)
                 intent.putExtra(OldActivity2.typeKey,OldActivity2.TYPE_COMIC)
+                startActivity(intent)
+            }
+        }
+
+        iv_banner.setOnClickListener {
+            askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                val intent = Intent(mActivity,PortraitActivity::class.java)
+                intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_PORTRAIT)
                 startActivity(intent)
             }
         }

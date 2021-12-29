@@ -13,6 +13,12 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/banner_gif_comic"/>
+        <ImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@mipmap/ic_cutout_banner"
+            android:visibility="gone"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

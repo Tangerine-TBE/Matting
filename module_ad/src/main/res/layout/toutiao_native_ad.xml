@@ -55,8 +55,8 @@
         <ImageView
             android:id="@+id/img_native_dislike"
             android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/tt_dislike_icon" />
+            android:layout_height="20dp"/>
+<!--            android:background="@drawable/tt_dislike_icon" />-->
     </LinearLayout>
 
     <Button

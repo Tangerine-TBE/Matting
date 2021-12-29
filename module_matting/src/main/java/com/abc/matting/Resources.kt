@@ -229,20 +229,20 @@ object Resources {
      * */
     fun getBackgroundGroup(): Array<BackgroundGroupBean>{
         return arrayOf(
-            BackgroundGroupBean("album","相册","beijing/group/album.png",R.drawable.tt_ad_logo_small,false),
-            BackgroundGroupBean("natural","自然","beijing/group/natural.png",R.drawable.tt_ad_logo_small,false),
-            BackgroundGroupBean("car","汽车","beijing/group/car.png",R.drawable.tt_ad_logo_small,false),
-            BackgroundGroupBean("game","游戏","beijing/group/game.png",R.drawable.tt_ad_logo_small,false),
-            BackgroundGroupBean("beauty","美女","beijing/group/beauty.png",R.drawable.tt_ad_logo_small,false),
-            BackgroundGroupBean("star","明星","beijing/group/star.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("sports","体育","beijing/group/sport.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("animal","动物萌宠","beijing/group/anima.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("mov","影视","beijing/group/mov.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("contracted","简约抽象","beijing/group/contracted.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("anime","动漫","beijing/group/anime.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("text","文字","beijing/group/text.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("couples","情侣","beijing/group/couples.png",R.drawable.tt_ad_logo_small,true),
-            BackgroundGroupBean("artistic","意境","beijing/group/artistic.png",R.drawable.tt_ad_logo_small,true)
+            BackgroundGroupBean("album","相册","beijing/group/album.png",R.drawable.ic_avatar,false),
+            BackgroundGroupBean("natural","自然","beijing/group/natural.png",R.drawable.ic_avatar,false),
+            BackgroundGroupBean("car","汽车","beijing/group/car.png",R.drawable.ic_avatar,false),
+            BackgroundGroupBean("game","游戏","beijing/group/game.png",R.drawable.ic_avatar,false),
+            BackgroundGroupBean("beauty","美女","beijing/group/beauty.png",R.drawable.ic_avatar,false),
+            BackgroundGroupBean("star","明星","beijing/group/star.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("sports","体育","beijing/group/sport.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("animal","动物萌宠","beijing/group/anima.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("mov","影视","beijing/group/mov.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("contracted","简约抽象","beijing/group/contracted.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("anime","动漫","beijing/group/anime.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("text","文字","beijing/group/text.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("couples","情侣","beijing/group/couples.png",R.drawable.ic_avatar,true),
+            BackgroundGroupBean("artistic","意境","beijing/group/artistic.png",R.drawable.ic_avatar,true)
         )
     }
 
