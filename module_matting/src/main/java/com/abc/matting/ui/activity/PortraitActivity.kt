@@ -369,24 +369,27 @@ class PortraitActivity : BaseActivity(),
     /**
      * 获取上传的图片
      * */
-    private fun getImage(path: String): Bitmap {
-        var bitmap = BitmapFactory.decodeFile(path)
-        if (bitmap == null)
-            return bitmap
-        if (bitmap.width < 1800 && bitmap.height < 1800)
-            return bitmap
+    private fun getImage(path: String): Bitmap? {
+        val option = BitmapFactory.Options()
+        option.inJustDecodeBounds = true
+         BitmapFactory.decodeFile(path,option)
+        if (option.outWidth == 0 || option.outHeight == 0 )
+            return null
+        if (option.outWidth < 1800 && option.outHeight < 1800)
+            return BitmapFactory.decodeFile(path)
         else {
-            bitmap = if (bitmap.width > bitmap.height) {
-                val s = 1800f / bitmap.width
-                val h = (bitmap.height * s).toInt()
-                val w = (bitmap.width * s).toInt()
+            val bitmap = if (option.outWidth > option.outHeight) {
+                val s = 1800f / option.outWidth
+                val h = (option.outHeight * s).toInt()
+                val w = (option.outWidth * s).toInt()
                 BitmapUtils.getBitmap(path, w, h)
             } else {
-                val s = 1800f / bitmap.height
-                val h = (bitmap.height * s).toInt()
-                val w = (bitmap.width * s).toInt()
+                val s = 1800f / option.outHeight
+                val h = (option.outHeight * s).toInt()
+                val w = (option.outWidth * s).toInt()
                 BitmapUtils.getBitmap(path, w, h)
             }
+
             return bitmap
         }
     }

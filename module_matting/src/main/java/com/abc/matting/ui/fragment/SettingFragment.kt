@@ -11,11 +11,13 @@ import com.abc.matting.ui.dialog.TipDialog
 import com.abc.matting.utils.GetDataUtils
 import com.abc.matting.utils.PermissionUtils
 import com.feisukj.base.AgreementContentActivity
+import com.feisukj.base.BaseConstant
 import com.feisukj.base.baseclass.BaseFragment
 import com.feisukj.base.bean.UserBean
 import com.feisukj.base.util.GsonUtils
 import com.feisukj.base.util.SPUtil
 import com.feisukj.base.util.ToastUtil
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.fragment_setting.*
 
 class SettingFragment : BaseFragment() {
@@ -27,36 +29,43 @@ class SettingFragment : BaseFragment() {
             if (SPUtil.getInstance().getBoolean(Constants.IS_LOGIN, false)){
                 exitLogin()
             }else{
+                MobclickAgent.onEvent(mActivity,BaseConstant.login_register)
                 startActivity(Intent(mActivity, LoginActivity::class.java))
             }
         }
 
         iv_vip.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.open_vip)
             if (!GetDataUtils.isVip())
                 startActivity(Intent(mActivity, PayActivity::class.java))
         }
 
         aboutUs.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.about)
             startActivity(Intent(mActivity, AboutUsActivity::class.java))
         }
 
         feedback.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.feedback)
             startActivity(Intent(mActivity, FeedBackActivity::class.java))
         }
 
         agreement.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.user_agreement)
             val intent = Intent(mActivity, AgreementContentActivity::class.java)
             intent.putExtra(AgreementContentActivity.FLAG, AgreementContentActivity.FLAG_FUWU)
             startActivity(intent)
         }
 
         privacy.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.privacy_policy)
             val intent = Intent(mActivity, AgreementContentActivity::class.java)
             intent.putExtra(AgreementContentActivity.FLAG, AgreementContentActivity.FLAG_YINSI)
             startActivity(intent)
         }
 
         set.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.privacy_rights)
             PermissionUtils.gotoPermission(mActivity)
         }
     }

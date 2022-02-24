@@ -54,4 +54,37 @@ object BaseConstant {
     const val NATIVE_ERROR_TT="nativeRequestError_toutiao"//请求失败
     const val NATIVE_SHOW_TT="nativeShow_toutiao"//展示原生广告
 
+    /*************************************************************************************/
+
+    const val one_click_matting = "10000_one_click_matting"       //首页点击一键漫画脸
+    const val portrait_matting = "10001_portrait_matting"     //点击人像抠图
+    const val face_effects = "10002_face_effects"     //点击人脸特效
+    const val intelligent_matting = "10003_intelligent_matting"       //点击智能抠图
+    const val beautify_pic = "10004_beautify_pic"     //点击美化图片
+    const val pic_clipping = "10005_pic_clipping"     //点击图片剪裁
+    const val add_filter = "10006_add_filter"     //点击添加滤镜
+    const val tone_adjustment = "10007_tone_adjustment"       //点击色调调整
+    const val add_text = "10008_add_text"     //点击添加文字
+    const val enlarge = "10009_enlarge"       //点击放大缩小
+    const val sticker = "10010_sticker"       //点击精美贴纸
+    const val mosaic = "10011_mosaic"     //点击马赛克涂鸦
+
+    const val cace_effects = "11000_cace_effects"     //人脸特效页面
+    const val grow_old = "11001_grow_old"     //变老相机
+    const val comic_face = "11002_comic_face"     //一键漫画脸
+    const val gender_conversion = "11003_gender_conversion"       //性别转换
+    const val tong_yan = "11004_tong_yan"     //童颜相机
+    const val magic = "11005_magic"       //魔法相机
+
+    const val login_register = "12000_login_register"     //登录/注册
+    const val open_vip = "12001_open_vip"     //开通VIP
+    const val feedback = "12002_feedback"     //意见反馈
+    const val about = "12003_about"       //关于我们
+    const val user_agreement = "12004_user_agreement"     //用户协议
+    const val privacy_policy = "12005_privacy_policy"     //隐私政策
+    const val privacy_rights = "12006_privacy_rights"     //系统隐私权限
+
+    const val launch_payment = "13000_launch_payment"     //发起支付
+    const val pay_success = "13001_pay_success"       //支付成功
+    const val pay_faild = "13002_pay_faild"       //支付失败
 }

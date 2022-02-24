@@ -19,6 +19,7 @@ import com.hjq.permissions.Permission
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
@@ -67,6 +68,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
     private fun initClickEven(){
         iv_anim.setOnClickListener {
             askPermission(mActivity,Permission.CAMERA){
+                MobclickAgent.onEvent(mActivity,BaseConstant.one_click_matting)
                 val intent = Intent(mActivity,OldActivity2::class.java)
                 intent.putExtra(OldActivity2.typeKey,OldActivity2.TYPE_COMIC)
                 startActivity(intent)
@@ -75,6 +77,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         iv_banner.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.portrait_matting)
                 val intent = Intent(mActivity,PortraitActivity::class.java)
                 intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_PORTRAIT)
                 startActivity(intent)
@@ -94,6 +97,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 //                    .forResult(PORTRAIT_MATTING_CODE)
 //            }
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.portrait_matting)
                 val intent = Intent(mActivity,PortraitActivity::class.java)
                 intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_PORTRAIT)
                 startActivity(intent)
@@ -102,12 +106,14 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
 
         //人脸特效
         face.setOnClickListener {
+            MobclickAgent.onEvent(mActivity,BaseConstant.face_effects)
             toEffect?.invoke()
         }
 
         //智能抠图
         view1.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.intelligent_matting)
                 val intent = Intent(mActivity,PortraitActivity::class.java)
                 intent.putExtra(PortraitActivity.WORK_TYPE_KEY,PortraitActivity.TYPE_INTELLIGENT)
                 startActivity(intent)
@@ -122,6 +128,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //美化图片
         view3.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.beautify_pic)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -137,6 +144,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //裁剪
         tailoring.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.pic_clipping)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -153,6 +161,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //滤镜
         filter.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.add_filter)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -166,6 +175,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //调整
         adjust.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.tone_adjustment)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -180,6 +190,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //添加文字
         addText.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.add_text)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -196,6 +207,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //放大缩小
         scale.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.enlarge)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -211,6 +223,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //贴纸
         stickers.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.sticker)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())
@@ -226,6 +239,7 @@ class MainFragment : BaseFragment(), MainPicAdapter.MainPicCallback {
         //涂鸦
         doodle.setOnClickListener {
             askPermission(mActivity,Permission.MANAGE_EXTERNAL_STORAGE){
+                MobclickAgent.onEvent(mActivity,BaseConstant.mosaic)
                 PictureSelector.create(context as Activity)
                     .openGallery(PictureMimeType.ofImage())
                     .imageEngine(GlideEngine.createGlideEngine())

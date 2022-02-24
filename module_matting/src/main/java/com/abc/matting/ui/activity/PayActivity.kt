@@ -14,12 +14,14 @@ import com.abc.matting.utils.GetDataUtils
 import com.abc.matting.utils.HttpUtils
 import com.abc.matting.utils.PayUtils
 import com.abc.matting.utils.Utils
+import com.feisukj.base.BaseConstant
 import com.feisukj.base.baseclass.BaseActivity
 import com.feisukj.base.bean.UserBean
 import com.feisukj.base.util.*
 import com.feisukj.base.util.LogUtils.e
 import com.feisukj.base.widget.loaddialog.LoadingDialog.clickListener
 import com.tencent.mm.opensdk.utils.Log
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_pay.*
 import java.util.*
 
@@ -117,6 +119,7 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
         }
         loadingDialog.show()
         loadingDialog.isVisibility()
+        MobclickAgent.onEvent(this,BaseConstant.launch_payment)
         PayUtils.payByWXOrALI(this, web, bean, payType)
     }
 
@@ -173,12 +176,14 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
                         SPUtil.getInstance().putBoolean(Constants.IS_LOGIN_THIRD, true)
                         if (GetDataUtils.isVip()) {
                             runOnUiThread {
+                                MobclickAgent.onEvent(this@PayActivity,BaseConstant.pay_success)
                                 ToastUtil.showCenterToast("支付成功")
                                 finish()
                             }
 
                         } else {
                             runOnUiThread {
+                                MobclickAgent.onEvent(this@PayActivity,BaseConstant.pay_faild)
                                 ToastUtil.showCenterToast("支付失败")
                             }
                         }
@@ -216,11 +221,13 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
                         SPUtil.getInstance().putString(Constants.USER_BEAN, response)
                         if (GetDataUtils.isVip()) {
                             runOnUiThread {
+                                MobclickAgent.onEvent(this@PayActivity,BaseConstant.pay_success)
                                 ToastUtil.showCenterToast("支付成功")
                                 finish()
                             }
                         } else {
                             runOnUiThread {
+                                MobclickAgent.onEvent(this@PayActivity,BaseConstant.pay_faild)
                                 ToastUtil.showCenterToast("支付失败")
                             }
                         }

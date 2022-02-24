@@ -83,15 +83,15 @@ public class BitmapUtils {
 
     public static Bitmap getBitmap(Context context, int vectorDrawableId, int w, int h){
         Bitmap bitmap=null;
-        if (Build.VERSION.SDK_INT> Build.VERSION_CODES.LOLLIPOP){
+//        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP){
             Drawable vectorDrawable = context.getDrawable(vectorDrawableId);
             bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             vectorDrawable.draw(canvas);
-        }else {
-            bitmap = BitmapFactory.decodeResource(context.getResources(), vectorDrawableId);
-        }
+//        }else {
+//            bitmap = BitmapFactory.decodeResource(context.getResources(), vectorDrawableId);
+//        }
         return bitmap;
     }
 
