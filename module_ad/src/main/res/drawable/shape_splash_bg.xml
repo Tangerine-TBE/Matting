@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item android:gravity="fill">
+        <bitmap android:src="@mipmap/spalsh_bg"/>
+    </item>
+    <item android:gravity="bottom"
+        android:bottom="55dp">
+        <bitmap android:src="@mipmap/spalsh_icon" android:gravity="center"/>
+    </item>
 </layer-list>
