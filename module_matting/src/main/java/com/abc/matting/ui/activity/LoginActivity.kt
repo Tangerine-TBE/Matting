@@ -33,6 +33,7 @@ class LoginActivity : BaseActivity() {
     override fun initView() {
         mImmersionBar.statusBarColor(android.R.color.transparent).statusBarDarkFont(true).init()
         mTencent = Tencent.createInstance(Constants.QQ_APP_ID, applicationContext)
+        regToWx()
         barBack.setOnClickListener {
             finish()
         }
@@ -53,6 +54,33 @@ class LoginActivity : BaseActivity() {
                 ToastUtil.showCenterToast("请先同意下方用户协议和隐私政策")
             }
         }
+        loginQQ.setOnClickListener {
+            if (isagreen)
+                loginByQQ()
+            else{
+                val anim = ScaleAnimation(1f,1.5f,1f,1.5f,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f)
+                anim.duration = 800
+                anim.repeatCount = 1
+                anim.interpolator = LinearInterpolator()
+                anim.repeatMode = Animation.REVERSE
+                agreen.startAnimation(anim)
+                ToastUtil.showCenterToast("请先同意下方用户协议和隐私政策")
+            }
+        }
+        loginWX.setOnClickListener {
+            if (isagreen)
+                loginBYWX()
+            else{
+                val anim = ScaleAnimation(1f,1.5f,1f,1.5f,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f)
+                anim.duration = 800
+                anim.repeatCount = 1
+                anim.interpolator = LinearInterpolator()
+                anim.repeatMode = Animation.REVERSE
+                agreen.startAnimation(anim)
+                ToastUtil.showCenterToast("请先同意下方用户协议和隐私政策")
+            }
+        }
+
         agreen.setOnClickListener {
             isagreen = !isagreen
             if (isagreen)
@@ -157,6 +185,7 @@ class LoginActivity : BaseActivity() {
             req.state = "wechat_sdk_demo_test"
             api!!.sendReq(req)
             loadingDialog.show()
+            otherLoginFlag = true
         }
     }
 
@@ -169,6 +198,7 @@ class LoginActivity : BaseActivity() {
         //all表示获取所有权限
         mTencent!!.login(this, "all", mIUiListener)
         loadingDialog.show()
+        otherLoginFlag = true
     }
 
     override fun onResume() {

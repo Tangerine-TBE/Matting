@@ -48,11 +48,11 @@ public class Constants {
 
     public static final String PAY_TYPE_WX = "WX";
     //微信APP_ID
-    public static final String WX_APP_ID = "wx111e3b3d980f7384";
+    public static final String WX_APP_ID = "wxcf342b324d6a5763";
     //QQ APP_ID
-    public static final String QQ_APP_ID = "1111208268";
+    public static final String QQ_APP_ID = "1112065850";
     //微信AppSecret
-    public static final String WX_SECRET = "fc509ee48c33ccbc82bfb3abadbc54ac";
+    public static final String WX_SECRET = "42a13a8bbeb3991f8b38900e2eac3bbd";
     //第三方登录类型
     public static final String LOGIN_TYPE = "logintype";
     //openID
@@ -95,6 +95,10 @@ public class Constants {
 
     //
     public static final Long MAX_PIC_FILE = 1024*1024*5L;
+
+    //倒计时时间
+    public static final Long DOWN_COUNT = 1000*60*60*24L-1000;
+    public static final String DOWN_COUNT_START_TIME = "down_count_time";
 
 
 }

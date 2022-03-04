@@ -202,14 +202,18 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="24dp">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="#33ffffff"
-                        android:layout_marginEnd="57dp"/>
+                        android:id="@+id/loginQQ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_three_login_bg"
+                        android:layout_marginEnd="57dp"
+                        android:src="@drawable/ic_login_qq"/>
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="#33ffffff"/>
+                        android:id="@+id/loginWX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_three_login_bg"
+                        android:src="@drawable/ic_login_wx"/>
 
                 </LinearLayout>
             </LinearLayout>

@@ -139,10 +139,10 @@ public class TimeUtils {
     /**
      * 豪秒转换成HH:mm:ss
      */
-    public static String secondToHHmmss(long second) {
+    public static String millisecondToHHmmss(long millisecond) {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         formatter.setTimeZone(TimeZone.getTimeZone("GMT+00:00"));
-        String hms = formatter.format(second);
+        String hms = formatter.format(millisecond);
         return hms;
     }
 

@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager
 import com.abc.matting.Constants
 import com.abc.matting.R
 import com.abc.matting.bean.PictureBean
+import com.abc.matting.ui.dialog.MainVipDialog
 import com.abc.matting.ui.fragment.EffectFragment
 import com.abc.matting.ui.fragment.MainFragment
 import com.abc.matting.ui.fragment.SettingFragment
@@ -74,6 +75,18 @@ class HomeActivity : BaseActivity() {
                 LogUtils.e("首页手机登录")
                 LoginUtils.loginByMobile()
             }
+        }
+
+        //判断是否需要重置倒计时开始时间
+        if (SPUtil.getInstance().getLong(
+                Constants.DOWN_COUNT_START_TIME,
+                0L
+            ) <= (System.currentTimeMillis() - Constants.DOWN_COUNT)
+        ){
+            SPUtil.getInstance().putLong(Constants.DOWN_COUNT_START_TIME, System.currentTimeMillis())
+            MainVipDialog(this){
+                startActivity(Intent(this,PayActivity::class.java))
+            }.show()
         }
 
         view_pager.adapter =object : FragmentStatePagerAdapter(supportFragmentManager){

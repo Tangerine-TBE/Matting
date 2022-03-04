@@ -1,6 +1,8 @@
 package com.abc.matting.ui.activity
 
+import android.animation.ValueAnimator
 import android.content.Intent
+import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abc.matting.Constants
@@ -10,6 +12,7 @@ import com.abc.matting.adapter.PayAdapter
 import com.abc.matting.adapter.PrivilegeAdapter
 import com.abc.matting.bean.DataBean
 import com.abc.matting.bean.PayBean
+import com.abc.matting.ui.dialog.PayExitDialog
 import com.abc.matting.utils.GetDataUtils
 import com.abc.matting.utils.HttpUtils
 import com.abc.matting.utils.PayUtils
@@ -27,13 +30,15 @@ import java.util.*
 
 class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
 
+    companion object{
+        const val ALI_PAY = 0
+        const val WX_PAY = 1
+    }
     private var payAdapter = PayAdapter()
     private var privilegeAdapter = PrivilegeAdapter()
     private var mList: Array<PayBean> = arrayOf()
     private var showDialog = 0
     private var isPaying = false
-    private val ALI_PAY = 0
-    private val WX_PAY = 1
     private var paySelectType = 0
     set(value) {
         field = value
@@ -46,6 +51,18 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
         }
     }
     private var selectItem = 0
+    private val exitDialog: PayExitDialog by lazy {
+        PayExitDialog(this,toDo = {
+            paySelectType = it
+            if (SPUtil.getInstance().getBoolean(Constants.IS_LOGIN, false)) {
+                if (!GetDataUtils.isVip()) buyVip() else ToastUtil.showCenterToast("您已是VIP")
+            } else {
+                this.startActivity(Intent(this, LoginActivity::class.java))
+            }
+        },{
+            finish()
+        })
+    }
 
     override fun getLayoutId(): Int = R.layout.activity_pay
 
@@ -76,7 +93,10 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
 
     private fun initEvent(){
         barBack.setOnClickListener {
-            finish()
+            if (remainTime() == 0L)
+                finish()
+            else
+                exitDialog.show()
         }
         ali.setOnClickListener {
             paySelectType = ALI_PAY
@@ -94,9 +114,53 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
                 this.startActivity(Intent(this, LoginActivity::class.java))
             }
         }
+        downCount()
+    }
+
+    /**
+     * 计算倒计时剩余时间
+     * */
+    private fun remainTime():Long{
+        val startTime = SPUtil.getInstance().getLong(Constants.DOWN_COUNT_START_TIME)
+        val remain = startTime + Constants.DOWN_COUNT - System.currentTimeMillis()
+        return if (remain<0) 0 else remain
+    }
+
+    private fun downCount(){
+        val time = remainTime().toInt()
+        if (time == 0){
+            hours.text = "00"
+            minute.text = "00"
+            second.text = "00"
+            mList.forEach {
+                it.money = it.oldMoney
+            }
+            payAdapter.notifyDataSetChanged()
+        }else{
+            val valueAnimator = ValueAnimator.ofInt(time,0)
+            valueAnimator.duration = time.toLong()
+            valueAnimator.interpolator = LinearInterpolator()
+            valueAnimator.addUpdateListener { animation ->
+                val t = animation?.animatedValue as Int
+                val str = TimeUtils.millisecondToHHmmss(t.toLong())
+                val timeList = str.split(":")
+                hours.text = timeList[0]
+                minute.text = timeList[1]
+                second.text = timeList[2]
+//                if (t < 1000){
+//                    mList.forEach {
+//                        it.money = it.oldMoney
+//                    }
+//                    payAdapter.notifyDataSetChanged()
+//                }
+            }
+            valueAnimator.start()
+        }
     }
 
     private fun buyVip() {
+        if (exitDialog.isShowing)
+            exitDialog.dismiss()
         isPaying = true
         showDialog = 0
         Log.e("支付测试----->", "开始执行充值事件")
@@ -185,6 +249,7 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
                             runOnUiThread {
                                 MobclickAgent.onEvent(this@PayActivity,BaseConstant.pay_faild)
                                 ToastUtil.showCenterToast("支付失败")
+                                loadingDialog.dismiss()
                             }
                         }
                     }
@@ -245,5 +310,18 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
                 }
             }
         })
+    }
+
+    override fun onBackPressed() {
+        if (remainTime() == 0L)
+            finish()
+        else
+            exitDialog.show()
+    }
+
+    override fun onDestroy() {
+        if (exitDialog.isShowing)
+            exitDialog.dismiss()
+        super.onDestroy()
     }
 }
