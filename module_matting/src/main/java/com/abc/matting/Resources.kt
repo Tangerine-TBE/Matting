@@ -628,4 +628,14 @@ object Resources {
         )
     }
 
+    fun getCommentList(): Array<CommentBean>{
+        return arrayOf(
+            CommentBean(0,R.mipmap.ic_pay_comment_avatar_1,"用户187****2589","超超超超级好用！ P图小白都可轻松完成，很简单诶。加油。"),
+            CommentBean(1,R.mipmap.ic_pay_comment_avatar_2,"用户158****1972","非常有趣好玩的一款抠图p图软件 还有特效相机。"),
+            CommentBean(2,R.mipmap.ic_pay_comment_avatar_3,"用户135****8726","我第一次用    感觉超级棒    给闺蜜做图   她特别高兴  嘻嘻嘻。"),
+            CommentBean(3,R.mipmap.ic_pay_comment_avatar_4,"用户159****9634","哇，这个软件真的是超级好用，智能扣图很完美。"),
+            CommentBean(4,R.mipmap.ic_pay_comment_avatar_5,"用户157****7154","非常好，一抠，抠上瘾了，五星好评，强列推建！")
+        )
+    }
+
 }

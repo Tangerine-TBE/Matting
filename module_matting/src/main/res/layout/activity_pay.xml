@@ -269,8 +269,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="22dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="100dp">
+                android:layout_marginEnd="8dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -633,6 +632,23 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="优质会员评论"
+                android:textColor="#ff9f5e13"
+                android:textSize="15sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="18dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

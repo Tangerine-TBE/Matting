@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.abc.matting.Constants
 import com.abc.matting.R
 import com.abc.matting.Resources
+import com.abc.matting.adapter.CommentAdapter
 import com.abc.matting.adapter.PayAdapter
 import com.abc.matting.adapter.PrivilegeAdapter
 import com.abc.matting.bean.DataBean
@@ -36,6 +37,7 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
     }
     private var payAdapter = PayAdapter()
     private var privilegeAdapter = PrivilegeAdapter()
+    private var commentAdapter = CommentAdapter()
     private var mList: Array<PayBean> = arrayOf()
     private var showDialog = 0
     private var isPaying = false
@@ -78,6 +80,10 @@ class PayActivity : BaseActivity(), PayAdapter.PriceCallback {
         privilegeAdapter.setData(Resources.getVipPrivilege())
         privilegeRecycler.layoutManager = GridLayoutManager(this, 3)
         privilegeRecycler.adapter = privilegeAdapter
+
+        commentAdapter.setData(Resources.getCommentList())
+        commentRecycler.layoutManager = LinearLayoutManager(this)
+        commentRecycler.adapter = commentAdapter
 
         tv_price.text = "${Utils.moneyFormat(mList[selectItem].money)}元"
 

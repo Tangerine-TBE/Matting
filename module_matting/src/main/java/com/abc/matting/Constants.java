@@ -97,7 +97,7 @@ public class Constants {
     public static final Long MAX_PIC_FILE = 1024*1024*5L;
 
     //倒计时时间
-    public static final Long DOWN_COUNT = 1000*60*60*24L-1000;
+    public static final Long DOWN_COUNT = 1000*60*60L-1000;
     public static final String DOWN_COUNT_START_TIME = "down_count_time";
 
 
