@@ -413,8 +413,6 @@ class TT_AD : AbsADParent() {
                 .setSupportDeepLink(true)
                 .setAdCount(1)
                 .setImageAcceptedSize(BaseConstant.application.resources.displayMetrics.widthPixels, BaseConstant.application.resources.displayMetrics.heightPixels)
-                .setRewardName("免广告") //奖励的名称
-                .setRewardAmount(1)   //奖励的数量
                 //必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需sdk透传
                 //可设置为空字符串
                 .setUserID("")

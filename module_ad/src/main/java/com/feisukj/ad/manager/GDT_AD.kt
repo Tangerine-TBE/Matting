@@ -5,7 +5,6 @@ import android.view.View
 import com.feisukj.ad.SplashActivity
 import com.qq.e.ads.banner2.UnifiedBannerADListener
 import com.qq.e.ads.banner2.UnifiedBannerView
-import com.qq.e.ads.cfg.BrowserType
 import com.qq.e.ads.cfg.DownAPPConfirmPolicy
 import com.qq.e.ads.interstitial2.UnifiedInterstitialAD
 import com.qq.e.ads.interstitial2.UnifiedInterstitialADListener
@@ -341,16 +340,6 @@ class GDT_AD : AbsADParent() {
                         Log.i(TAG_GDT, "initGDT_NativeExpressAD_onADLeftApplication")
 
                     }
-
-                    override fun onADOpenOverlay(nativeExpressADView: NativeExpressADView) {
-                        Log.i(TAG_GDT, "initGDT_NativeExpressAD_onADOpenOverlay")
-
-                    }
-
-                    override fun onADCloseOverlay(nativeExpressADView: NativeExpressADView) {
-                        Log.i(TAG_GDT, "initGDT_NativeExpressAD_onADCloseOverlay")
-
-                    }
                 }) // 这里的Context必须为Activity
         //            nativeExpressAD.setVideoOption(new VideoOption.Builder()
         //                    .setAutoPlayPolicy(VideoOption.AutoPlayPolicy.WIFI) // 设置什么网络环境下可以自动播放视频
@@ -358,7 +347,6 @@ class GDT_AD : AbsADParent() {
         //                    .build()); // setVideoOption是可选的，开发者可根据需要选择是否配置
 
         nativeExpressAD?.loadAD(1)
-        nativeExpressAD?.setBrowserType(BrowserType.Default)
         nativeExpressAD?.setDownAPPConfirmPolicy(DownAPPConfirmPolicy.Default)
 
     }
@@ -416,9 +404,6 @@ class GDT_AD : AbsADParent() {
     private fun showBannerView(){
         unifiedBannerView?.destroy()
         unifiedBannerView=UnifiedBannerView(activity,ADConstants.kGDTMobSDKBannerKey,object : UnifiedBannerADListener{
-            override fun onADCloseOverlay() {
-
-            }
 
             override fun onADExposure() {
 
@@ -429,10 +414,6 @@ class GDT_AD : AbsADParent() {
             }
 
             override fun onADLeftApplication() {
-
-            }
-
-            override fun onADOpenOverlay() {
 
             }
 

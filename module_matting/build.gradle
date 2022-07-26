@@ -46,6 +46,9 @@ dependencies {
     implementation 'com.github.getActivity:XXPermissions:11.5'
     implementation 'io.github.lucksiege:pictureselector:v2.7.3-rc03'
 
+    implementation("com.aliyun.dpa:oss-android-sdk:2.9.12")
+    implementation 'id.zelory:compressor:3.0.1'
+
     implementation project(':module_ad')
     implementation project(':module_base')
     implementation project(':cropper')

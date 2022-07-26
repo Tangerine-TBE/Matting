@@ -1,8 +1,6 @@
 package com.feisukj.ad
 
-import android.Manifest
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,16 +10,13 @@ import com.feisukj.base.*
 import com.feisukj.base.api.AdService
 import com.feisukj.base.bean.ad.ADConstants
 import com.feisukj.base.bean.ad.AdsConfig
-import com.feisukj.base.permission.DefaultRationale
 import com.feisukj.base.retrofitnet.HttpUtils
 import com.feisukj.base.util.PackageUtils
 import com.feisukj.base.util.SPUtil
 import com.google.gson.Gson
 import com.gyf.immersionbar.ImmersionBar
-import com.qq.e.comm.managers.GDTADManager
 import com.qq.e.comm.managers.GDTAdSdk
 import com.umeng.commonsdk.UMConfigure
-import com.yanzhenjie.permission.AndPermission
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
