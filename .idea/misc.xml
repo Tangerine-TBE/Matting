@@ -6,9 +6,12 @@
         <entry key="..\:/Git_Project/Cutout/module_ad/src/main/res/drawable/shape_splash_bg.xml" value="0.1648148148148148" />
         <entry key="..\:/Git_Project/Cutout/module_ad/src/main/res/layout/activity_splash.xml" value="0.2028985507246377" />
         <entry key="..\:/Git_Project/Cutout/module_ad/src/main/res/layout/toutiao_native_ad.xml" value="0.22291666666666668" />
+        <entry key="..\:/Git_Project/Cutout/module_base/src/main/res/layout/activity_agreement_content_base.xml" value="0.27309782608695654" />
         <entry key="..\:/Git_Project/Cutout/module_base/src/main/res/layout/dialog_display_launch_tip.xml" value="0.22" />
         <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/ic_main_vip_close.xml" value="0.196875" />
+        <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/ic_red_arrow_top.xml" value="0.1055" />
         <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/ic_vip_vip_dialog_select_n.xml" value="0.26666666666666666" />
+        <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/selector_image_checkbox.xml" value="0.1055" />
         <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/shape_main_vip_dialog_btn_bg.xml" value="0.3212962962962963" />
         <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/shape_pay_comment_bg.xml" value="0.35" />
         <entry key="..\:/Git_Project/Cutout/module_matting/src/main/res/drawable/shape_pay_time_bg.xml" value="0.196875" />

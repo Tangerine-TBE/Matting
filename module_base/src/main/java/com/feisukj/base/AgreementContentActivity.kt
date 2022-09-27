@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -14,6 +15,7 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.view.View
+import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
 import com.feisukj.base.util.ToastUtil
 import com.gyf.immersionbar.ImmersionBar
@@ -71,8 +73,71 @@ class AgreementContentActivity:AppCompatActivity() {
     }
     private fun yinSi(){
 //        agreementContent.text=getString(R.string.privacyStatement,packageManager.getApplicationLabel(applicationInfo),com, email,getFuwu())
-        agreementContent.text = getFuwu()
-        agreementContent.movementMethod = LinkMovementMethod.getInstance()
+//        agreementContent.text = getFuwu()
+//        agreementContent.movementMethod = LinkMovementMethod.getInstance()
+        webView.visibility = View.VISIBLE
+        initWebView()
+    }
+
+    private fun initWebView() {
+        webView.webChromeClient = WebChromeClient()
+        val webSettings = webView.settings
+        webSettings.javaScriptEnabled = true
+//        webSettings.useWideViewPort = true
+//        webSettings.loadWithOverviewMode = true
+
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP){
+            webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        }
+        webSettings.setSupportZoom(true)
+        webSettings.builtInZoomControls = true
+        webSettings.displayZoomControls = false
+
+        webSettings.domStorageEnabled = true//不加这句有些h5登陆窗口出不来 H5页面使用DOM storage API导致的页面加载问题
+        webSettings.cacheMode = WebSettings.LOAD_DEFAULT
+        webSettings.allowFileAccess = true
+        webSettings.javaScriptCanOpenWindowsAutomatically = true
+        webSettings.loadsImagesAutomatically = true
+        webSettings.defaultTextEncodingName = "utf-8"
+        webView.webViewClient = object : WebViewClient(){
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
+                return false
+            }
+//            override fun onPageFinished(view: WebView?, url: String?) {
+//                super.onPageFinished(view, url)
+//                webView.loadUrl("javascript:androidSetAppName('${packageManager.getApplicationLabel(applicationInfo)}')")
+//                webView.loadUrl("javascript:androidSetCompanyName('${com}')")
+//                webView.loadUrl("javascript:androidSetEmail('${email}')")
+//            }
+        }
+        //加载网络资源
+        webView.loadUrl("http://test.aisou.club/privacy_policy/privacy_policy.html?app_name=${packageManager.getApplicationLabel(applicationInfo)}&pack_name=${BaseConstant.packageName}")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        webView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        webView.onPause()
+    }
+
+    override fun onBackPressed() {
+        if (webView.canGoBack()){
+            webView.goBack()
+        }else{
+            finish()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        webView.destroy()
     }
 
     private fun getFuwu():SpannableStringBuilder{

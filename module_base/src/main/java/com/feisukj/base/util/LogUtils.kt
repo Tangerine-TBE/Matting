@@ -8,7 +8,7 @@ object LogUtils {
     /**
      * 日志输出时的TAG
      */
-    private val mTag = "Module"
+    private val mTag = "MyLog:"
     /**
      * 日志输出级别NONE
      */

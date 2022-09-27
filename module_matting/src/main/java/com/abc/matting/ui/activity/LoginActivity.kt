@@ -1,6 +1,7 @@
 package com.abc.matting.ui.activity
 
 import android.content.Intent
+import android.os.Build
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.view.animation.ScaleAnimation
@@ -32,6 +33,7 @@ class LoginActivity : BaseActivity() {
 
     override fun initView() {
         mImmersionBar.statusBarColor(android.R.color.transparent).statusBarDarkFont(true).init()
+        Tencent.setIsPermissionGranted(true,Build.MODEL)
         mTencent = Tencent.createInstance(Constants.QQ_APP_ID, applicationContext)
         regToWx()
         barBack.setOnClickListener {
@@ -224,6 +226,10 @@ class LoginActivity : BaseActivity() {
                             dismissLoading()
                         }
                         LogUtils.e("------------------------------------------------------------第三方登录成功--------------------------------------------------------")
+                    }else{
+                        runOnUiThread {
+                            dismissLoading()
+                        }
                     }
                 }
             }, 3000)

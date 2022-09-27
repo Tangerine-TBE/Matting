@@ -1,5 +1,6 @@
 package com.feisukj.ad.manager
 
+import android.os.Bundle
 import androidx.annotation.MainThread
 import android.util.Log
 import android.view.View
@@ -91,6 +92,10 @@ class TT_AD : AbsADParent() {
 
                     }
 
+                    override fun onRewardArrived(p0: Boolean, p1: Int, p2: Bundle?) {
+
+                    }
+
                     override fun onSkippedVideo() {
 
                     }
@@ -147,7 +152,6 @@ class TT_AD : AbsADParent() {
         val adSlot = AdSlot.Builder()
                 .setCodeId(ADConstants.kTouTiaoKaiPing)
                 .setSupportDeepLink(true)
-                .setDownloadType(TTAdConstant.DOWNLOAD_TYPE_POPUP)
                 .setImageAcceptedSize(BaseConstant.application.resources.displayMetrics.widthPixels, BaseConstant.application.resources.displayMetrics.heightPixels)
                 .build()
         //step4:请求广告，调用开屏广告异步请求接口，对请求回调的广告作渲染处理
@@ -267,7 +271,6 @@ class TT_AD : AbsADParent() {
                 .setCodeId(ADConstants.kTouTiaoChaPingKey)
                 .setSupportDeepLink(true)
                 .setAdCount(1)
-                .setDownloadType(TTAdConstant.DOWNLOAD_TYPE_POPUP)
                 .setExpressViewAcceptedSize(350f,350f) //期望个性化模板广告view的size,单位dp
                 .setImageAcceptedSize(640,320 )//这个参数设置即可，不影响个性化模板广告的size
                 .build()
@@ -300,7 +303,6 @@ class TT_AD : AbsADParent() {
                 .setCodeId(ADConstants.kTouTiaoBannerKey) //广告位id
                 .setSupportDeepLink(true)
                 .setAdCount(1) //请求广告数量为1到3条
-                .setDownloadType(TTAdConstant.DOWNLOAD_TYPE_POPUP)
                 .setExpressViewAcceptedSize(width,70f) //期望个性化模板广告view的size,单位dp
                 .setImageAcceptedSize(640,320 )//这个参数设置即可，不影响个性化模板广告的size
                 .build()
@@ -343,7 +345,6 @@ class TT_AD : AbsADParent() {
                 .setCodeId(ADConstants.kTouTiaoSeniorKey) //广告位id
                 .setSupportDeepLink(true)
                 .setAdCount(1) //请求广告数量为1到3条
-                .setDownloadType(TTAdConstant.DOWNLOAD_TYPE_POPUP)
                 .setExpressViewAcceptedSize(300f,SizeUtils.fitFeedHeight(DeviceUtils.getScreenHeight(activity))) //期望个性化模板广告view的size,单位dp
                 .setImageAcceptedSize(640,320) //这个参数设置即可，不影响个性化模板广告的size
                 .build()
@@ -433,6 +434,10 @@ class TT_AD : AbsADParent() {
                         p4: String?
                     ) {
                         rewardVideoCallback?.onRewardVerify(p0,p1,p2)
+                    }
+
+                    override fun onRewardArrived(p0: Boolean, p1: Int, p2: Bundle?) {
+
                     }
 
                     override fun onSkippedVideo() {
