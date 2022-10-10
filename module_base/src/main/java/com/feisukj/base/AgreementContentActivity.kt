@@ -94,7 +94,7 @@ class AgreementContentActivity:AppCompatActivity() {
         webSettings.displayZoomControls = false
 
         webSettings.domStorageEnabled = true//不加这句有些h5登陆窗口出不来 H5页面使用DOM storage API导致的页面加载问题
-        webSettings.cacheMode = WebSettings.LOAD_DEFAULT
+        webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
         webSettings.allowFileAccess = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webSettings.loadsImagesAutomatically = true
